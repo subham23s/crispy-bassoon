@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "description": "Human annotation schema for project-defined CERS calibration. The file contains no labels.",
+  "required_fields": ["claim", "evidence", "human_label", "source", "category"],
+  "allowed_human_labels": ["SUPPORTED", "PARTIALLY_SUPPORTED", "CONTRADICTED", "UNKNOWN"],
+  "record_example": {
+    "claim": "",
+    "evidence": "",
+    "human_label": "SUPPORTED",
+    "source": "",
+    "category": ""
+  },
+  "note": "Do not populate this schema with generated labels. Human annotation and provenance review are required before calibration statistics are computed."
+}
