@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-10-03T19:16:29.013066+00:00",
+  "benchmark": "CyberTrust-QA",
+  "version": "0.1",
+  "benchmark_sha256": "a1d7d7f0105eabee53129c9bbd8a4413e3570258abf612dc7ecc580afd6d777c",
+  "corpus_mode": "curated_seed",
+  "corpus_documents": 5,
+  "corpus_sha256": "8d208bc3f137d7a818abfca2c63183db4cfc997720249d220ea57e0f5087e300",
+  "items": [
+    {
+      "id": "ctqa-001",
+      "category": "factual",
+      "abstained": false,
+      "cers": 0.7213,
+      "claim_support_rate": 0.5714285714285714,
+      "exact_match": 0.0,
+      "token_f1": 0.09615384615384616,
+      "citation_count": 2
+    },
+    {
+      "id": "ctqa-002",
+      "category": "factual",
+      "abstained": false,
+      "cers": 0.6884,
+      "claim_support_rate": 0.6666666666666666,
+      "exact_match": 0.0,
+      "token_f1": 0.11570247933884298,
+      "citation_count": 2
+    },
+    {
+      "id": "ctqa-003",
+      "category": "abstention",
+      "abstained": true,
+      "cers": 0.0,
+      "claim_support_rate": 0.0,
+      "exact_match": 0.0,
+      "token_f1": 0.14285714285714285,
+      "citation_count": 0
+    }
+  ],
+  "mean_cers": 0.4699,
+  "abstention_rate": 0.3333333333333333,
+  "note": "Metrics were computed from this run; they are not hard-coded and are not a claim of external validation."
+}

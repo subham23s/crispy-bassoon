@@ -1,0 +1,34 @@
+{
+  "name": "cybersecra-x-web",
+  "version": "0.2.0",
+  "private": true,
+  "description": "CyberSecRA-X evidence-aware cybersecurity research dashboard",
+  "type": "module",
+  "scripts": {
+    "dev": "node node_modules/next/dist/bin/next dev",
+    "build": "node node_modules/next/dist/bin/next build",
+    "build:portable": "node --require ./scripts/portable-copy.cjs node_modules/next/dist/bin/next build",
+    "start": "node node_modules/next/dist/bin/next start",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "next": "15.5.27",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "22.15.21",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.8.3",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.5.28",
+    "tailwindcss": "4.3.3"
+  },
+  "overrides": {
+    "next": { "postcss": "8.5.28" },
+    "sharp": "0.35.5"
+  }
+}

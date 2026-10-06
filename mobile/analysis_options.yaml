@@ -1,0 +1,13 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - .dart_tool/**
+    - android/**
+    - ios/**
+
+linter:
+  rules:
+    # Network and platform failures are surfaced to the UI as ApiException.
+    avoid_print: false

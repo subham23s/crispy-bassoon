@@ -1,0 +1,27 @@
+name: cybersecra_x_mobile
+description: Evidence-aware CyberSecRA-X mobile client.
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  # file_picker 8.1.x requires Dart 3.4 / Flutter 3.22 or newer.
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.2.2
+  file_picker: ^8.1.6
+  image_picker: ^1.1.2
+  speech_to_text: ^7.0.0
+  flutter_secure_storage: ^9.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

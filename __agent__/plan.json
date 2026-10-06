@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "title": "Inspect project instructions and baseline implementation",
+      "status": "done"
+    },
+    {
+      "title": "Complete real data bootstrap and processing pipeline",
+      "status": "done"
+    },
+    {
+      "title": "Implement ML, transformer verification, CERS, and ablation components",
+      "status": "done"
+    },
+    {
+      "title": "Implement production service adapters and background processing",
+      "status": "done"
+    },
+    {
+      "title": "Migrate frontend to Next.js TypeScript routes and API integration",
+      "status": "done"
+    },
+    {
+      "title": "Complete research, graph, timeline, admin, and export flows",
+      "status": "done"
+    },
+    {
+      "title": "Complete mobile flows and environment automation",
+      "status": "done"
+    },
+    {
+      "title": "Add and run comprehensive regression tests",
+      "status": "done"
+    },
+    {
+      "title": "Report implemented, verified, blocked, and not-run work",
+      "status": "done"
+    },
+    {
+      "title": "Continue from filesystem: complete experiment lifecycle, metrics, and web controls",
+      "status": "done"
+    },
+    {
+      "title": "Correct model scoring/cache/offline inference and verify adapter contracts",
+      "status": "done"
+    },
+    {
+      "title": "Connect admin refresh controls and complete web/mobile research workflows",
+      "status": "done",
+      "note": "Flutter source and widget fixture implemented; local SDK verification remains blocked"
+    },
+    {
+      "title": "Verify backend, active Next.js client, production build, live API, and report round trips",
+      "status": "done",
+      "result": "54 backend passed, 1 skipped; 12 web passed; TypeScript/build/live smoke passed"
+    },
+    {
+      "title": "Recompute evaluation and document the continuation",
+      "status": "done",
+      "record": "docs/reports/CONTINUATION_2026-10-03.md"
+    },
+    {
+      "title": "Run model-backed A/D, human calibration, native device builds, and production deployment checks",
+      "status": "blocked",
+      "reason": "Requires reviewed checkpoints/approved LLM, human-reviewed labels, Android SDK or macOS/Xcode, and a deployment target; local infrastructure, Flutter analysis/tests, OCR, and worker cycles now verified"
+    },
+    {
+      "title": "Complete PostgreSQL answer/chunk parity, serialization/health fixes, and live service contracts",
+      "status": "done",
+      "result": "6 live PostgreSQL/pgvector, Redis, and Neo4j contracts passed; includes FastAPI PostgreSQL flows"
+    },
+    {
+      "title": "Complete fresh source-worker locking, lifecycle, data-directory isolation, and resumable NVD updates",
+      "status": "done",
+      "result": "Fresh CISA catalog 2026.10.02: 1733 records processed with zero failures; cached fixture cycle/SIGTERM and NVD cursor regression tests passed"
+    },
+    {
+      "title": "Fix mobile compilation/session retries and execute real Flutter analysis/tests",
+      "status": "done",
+      "result": "Clean Dart analysis and 6 Flutter tests via native-filesystem staging; missing Android/iOS scaffolds generated and platform permission structures verified"
+    },
+    {
+      "title": "Verify real camera/scanned-PDF OCR and table extraction; preserve page locators and fail explicitly",
+      "status": "done",
+      "result": "4 real-engine extraction/timeout checks passed with Tesseract 5.5.0"
+    },
+    {
+      "title": "Verify final continuation and update documentation/CI",
+      "status": "done",
+      "result": "75 backend passed, zero skips; 12 web passed; TypeScript/compile/live Uvicorn smoke/config checks passed",
+      "record": "docs/reports/CONTINUATION_2026-10-03_02.md"
+    },
+    {
+      "title": "Productize configuration, local lifecycle, readiness, authentication, request bounds, and release dependencies",
+      "status": "done",
+      "result": "Configure/setup/build/up/status/test/down executed; generated credentials, guarded process shutdown, readiness fallback, single-use concurrent refresh rotation, and dependency advisory repairs verified"
+    },
+    {
+      "title": "Execute product release verification and fresh archive integration",
+      "status": "done",
+      "result": "77 backend passed with zero skips; 12 web passed; TypeScript/21-page production build/clean Dart analysis/6 Flutter tests passed; 18 live web/API routes passed in the original and fresh native-filesystem extraction; npm/pip audits passed",
+      "record": "docs/PRODUCT_RELEASE.md"
+    },
+    {
+      "title": "Finalize release documentation and verify the clean source ZIP",
+      "status": "done",
+      "result": "317 source files; required-file/content-hash/CRC/excluded-path/local-credential checks passed; default local product restarted successfully at ports 3000/8000",
+      "archive": "release/CyberSecRA-X-final.zip",
+      "sha256": "f0d8f96c00a9bf2e8a3d90f306c1cf83bac1cd1057fef960f7b126ac6bea9f65"
+    }
+  ],
+  "updated_at": "2026-10-03",
+  "session_id": "01a0fe44-3fe4-75f8-af09-d9a0a45a6808"
+}

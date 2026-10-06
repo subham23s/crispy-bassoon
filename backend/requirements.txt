@@ -1,0 +1,17 @@
+# Production API mode (Python 3.11+)
+fastapi==0.142.2
+starlette==1.3.1
+uvicorn[standard]==0.34.0
+pydantic==2.10.5
+python-multipart==0.0.31
+PyMuPDF==1.25.3
+PyYAML==6.0.2
+scikit-learn==1.7.2
+# Optional production adapters
+SQLAlchemy==2.0.37
+psycopg[binary]==3.2.4
+redis==5.2.1
+neo4j==5.27.0
+httpx==0.28.1
+pytest==9.0.3
+pytest-cov==6.0.0

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberSecRA-X evidence-aware cybersecurity research intelligence" />
+  <title>CyberSecRA-X · Evidence-aware intelligence</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">CX</div>
+        <div><strong>CyberSecRA-X</strong><span>Research intelligence</span></div>
+      </div>
+      <div class="workspace-switcher">
+        <span class="eyebrow">WORKSPACE</span>
+        <strong>Evidence Lab</strong>
+        <span class="muted">Authenticated workspace</span>
+      </div>
+      <nav aria-label="Research views">
+        <button type="button" class="nav-item active" data-view="dashboard"><span aria-hidden="true">⌂</span> Dashboard</button>
+        <button type="button" class="nav-item" data-view="ask"><span aria-hidden="true">◈</span> Ask CyberSecRA-X</button>
+        <button type="button" class="nav-item" data-view="investigate"><span aria-hidden="true">⌁</span> Investigations</button>
+        <button type="button" class="nav-item" data-view="research"><span aria-hidden="true">◎</span> Research mode</button>
+        <button type="button" class="nav-item" data-view="documents"><span aria-hidden="true">▤</span> Document library</button>
+        <button type="button" class="nav-item" data-view="security"><span aria-hidden="true">◉</span> RAG security</button>
+      </nav>
+      <div class="sidebar-foot">
+        <span id="sidebar-health-dot" class="status-dot" aria-hidden="true"></span>
+        <span id="sidebar-health">API health unknown</span>
+        <button type="button" class="icon-button" id="theme-toggle" aria-label="Switch to light theme" aria-pressed="false" title="Switch to light theme">◐</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section id="auth-panel" class="auth-panel" aria-labelledby="auth-title">
+        <div class="auth-card">
+          <div class="brand auth-brand">
+            <div class="brand-mark" aria-hidden="true">CX</div>
+            <div><strong>CyberSecRA-X</strong><span>Evidence-aware research intelligence</span></div>
+          </div>
+          <span class="eyebrow accent">PRIVATE EVIDENCE WORKSPACE</span>
+          <h1 id="auth-title">Sign in to your research workspace</h1>
+          <p class="muted">Use an account to keep uploaded evidence and analysis requests scoped to your session. Access and refresh tokens stay in memory and are cleared when you sign out.</p>
+          <div class="auth-health" aria-live="polite"><span id="auth-health-dot" class="status-dot" aria-hidden="true"></span><span id="auth-api-status">Checking public API health…</span></div>
+          <form id="auth-form" novalidate>
+            <div id="auth-message" class="form-message" role="status" aria-live="polite"></div>
+            <label for="auth-email">Email address</label>
+            <input id="auth-email" name="email" type="email" autocomplete="email" required />
+            <label for="auth-password">Password</label>
+            <input id="auth-password" name="password" type="password" autocomplete="current-password" minlength="10" required />
+            <div id="confirm-password-row" hidden>
+              <label for="auth-confirm-password">Confirm password</label>
+              <input id="auth-confirm-password" name="confirm_password" type="password" autocomplete="new-password" minlength="10" />
+            </div>
+            <button type="submit" class="primary auth-submit" id="auth-submit">Sign in <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="auth-switch-copy"><span id="auth-switch-prompt">Need an account?</span> <button type="button" class="link-button" id="auth-switch">Register</button></p>
+        </div>
+      </section>
+
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      <div id="app-content" hidden>
+        <header class="topbar">
+          <div><span class="eyebrow">CYBERSECURITY RESEARCH PLATFORM</span><h1 id="page-title">Good evening, researcher.</h1></div>
+          <div class="top-actions">
+            <span class="api-pill"><span id="api-health-dot" class="status-dot" aria-hidden="true"></span><span id="api-status">Checking API health…</span></span>
+            <span id="user-email" class="user-email"></span>
+            <button type="button" class="avatar" id="logout-button" aria-label="Sign out">↪</button>
+          </div>
+        </header>
+        <section class="view active" id="view-dashboard" aria-labelledby="dashboard-title">
+          <div class="hero-card">
+            <div><span class="eyebrow accent">EVIDENCE-AWARE INTELLIGENCE</span><h2 id="dashboard-title">Ask better questions.<br><em>Trust what you can verify.</em></h2><p>Trace answers to attributed sources, inspect claim-level support, and abstain when the evidence is not enough.</p><button type="button" class="primary" data-view-target="ask">Start a research query <span aria-hidden="true">→</span></button></div>
+            <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div><div class="orbit-core">E<br><small>evidence</small></div><span class="orbit-label label-one">PROVENANCE</span><span class="orbit-label label-two">VERIFY</span><span class="orbit-label label-three">TRACE</span></div>
+          </div>
+          <div class="section-head"><div><span class="eyebrow">WORKSPACE PULSE</span><h3>Research overview</h3></div><span class="muted">Values update from the API</span></div>
+          <div class="stat-grid">
+            <div class="stat-card"><span class="stat-icon blue" aria-hidden="true">◈</span><div><strong id="doc-count">—</strong><span>Workspace documents</span></div><small class="trend">current session</small></div>
+            <div class="stat-card"><span class="stat-icon violet" aria-hidden="true">⌁</span><div><strong id="health-runtime">—</strong><span>API runtime</span></div><small class="trend" id="health-runtime-detail">waiting for health data</small></div>
+            <div class="stat-card"><span class="stat-icon green" aria-hidden="true">✓</span><div><strong id="cers-value">—</strong><span>Latest CERS</span></div><small class="trend" id="cers-detail">No query submitted</small></div>
+            <div class="stat-card"><span class="stat-icon orange" aria-hidden="true">!</span><div><strong id="auth-user-state">—</strong><span>Session identity</span></div><small class="trend">token held in memory</small></div>
+          </div>
+          <div class="lower-grid">
+            <div class="panel quick-panel"><div class="panel-head"><div><span class="eyebrow">QUICK ACTIONS</span><h3>What are you investigating?</h3></div></div><div class="quick-actions"><button type="button" data-view-target="ask"><b aria-hidden="true">⌕</b><span>Ask a question</span><small>Evidence-backed answer</small></button><button type="button" data-investigation="CVE-2024-0001"><b aria-hidden="true">◉</b><span>Investigate a CVE</span><small>Defensive evidence query</small></button><button type="button" data-view-target="research"><b aria-hidden="true">⊹</b><span>Analyze research</span><small>Compare supplied papers</small></button><button type="button" data-view-target="documents"><b aria-hidden="true">↥</b><span>Upload evidence</span><small>PDF, logs, JSON, TXT</small></button></div></div>
+            <div class="panel status-panel"><div class="panel-head"><div><span class="eyebrow">SYSTEM STATUS</span><h3>Observed API capabilities</h3></div><span class="badge" id="health-badge">Checking</span></div><div id="health-capabilities" class="status-list"><p class="muted">Waiting for public health data.</p></div><p id="health-note" class="callout">Only capabilities reported by the API are shown here.</p></div>
+          </div>
+        </section>
+
+        <section class="view" id="view-ask" aria-labelledby="ask-title"><div class="section-head"><div><span class="eyebrow">RESEARCH CONSOLE</span><h2 id="ask-title">Ask CyberSecRA-X</h2><p class="muted">Every response exposes evidence, provenance, verification, and limitations.</p></div><label class="mode-select" for="answer-mode">Answer mode <select id="answer-mode"><option>RESEARCHER</option><option>SOC_ANALYST</option><option>STUDENT</option><option>BEGINNER</option><option>INTERVIEW</option></select></label></div><div class="query-box"><label class="sr-only" for="query-input">Research question</label><textarea id="query-input" rows="4" placeholder="Ask a cybersecurity question, e.g. What does NIST CSF 2.0 provide?"></textarea><div class="query-actions"><span class="muted">Try a CVE, ATT&amp;CK technique, research question, or defensive recommendation.</span><button type="button" class="primary" id="ask-button">Analyze evidence <span aria-hidden="true">→</span></button></div></div><div id="answer-output" class="answer-output empty-state"><div class="empty-icon" aria-hidden="true">◎</div><h3>Your evidence workspace is ready</h3><p>Submit a question to see the full evidence chain. No answer or score is assumed before a query.</p></div></section>
+
+        <section class="view" id="view-investigate" aria-labelledby="investigate-title"><div class="section-head"><div><span class="eyebrow">INVESTIGATION TOOLS</span><h2 id="investigate-title">Investigations</h2><p class="muted">Run focused defensive analysis against the evidence API.</p></div></div><div class="tool-grid"><div class="tool-card"><span class="tool-icon orange" aria-hidden="true">CVE</span><h3>Vulnerability intelligence</h3><p>Lookup a CVE through the evidence query workflow and distinguish known from unknown.</p><div class="inline-form"><label class="sr-only" for="cve-input">CVE identifier</label><input id="cve-input" value="CVE-2024-0001" /><button type="button" class="secondary" id="cve-button">Investigate</button></div></div><div class="tool-card"><span class="tool-icon blue" aria-hidden="true">LOG</span><h3>Potentially suspicious logs</h3><label class="sr-only" for="log-input">Log content</label><textarea id="log-input" rows="4" placeholder="Paste TXT, CSV, or JSON log content"></textarea><button type="button" class="secondary" id="log-button">Analyze defensively</button><div id="log-output" class="tool-output" aria-live="polite"></div></div><div class="tool-card"><span class="tool-icon violet" aria-hidden="true">IOC</span><h3>IOC triage</h3><label class="sr-only" for="ioc-input">Indicators to classify</label><textarea id="ioc-input" rows="4" placeholder="Paste an IP, domain, URL, or hash"></textarea><button type="button" class="secondary" id="ioc-button">Classify indicators</button><div id="ioc-output" class="tool-output" aria-live="polite"></div></div></div></section>
+
+        <section class="view" id="view-research" aria-labelledby="research-title"><div class="section-head"><div><span class="eyebrow">LITERATURE INTELLIGENCE</span><h2 id="research-title">Research mode</h2><p class="muted">Candidate gaps are observations backed by supplied documents, never proven discoveries.</p></div><button type="button" class="secondary" id="gap-button">Find candidate gaps</button></div><div class="research-layout"><div class="panel methodology"><span class="eyebrow">WORKFLOW</span><h3>From question to defensible report</h3><div class="workflow"><div><b>01</b><span>Decompose</span><small>Intent, entities, temporal needs</small></div><div><b>02</b><span>Retrieve</span><small>Signals reported by the API</small></div><div><b>03</b><span>Compare</span><small>Authority, recency, contradictions</small></div><div><b>04</b><span>Verify</span><small>Claim-level citations and score</small></div></div></div><div class="panel" id="gap-output"><span class="eyebrow">OUTPUT</span><h3>No gap analysis yet</h3><p class="muted">Upload multiple papers, then run the analysis.</p></div></div></section>
+
+        <section class="view" id="view-documents" aria-labelledby="documents-title"><div class="section-head"><div><span class="eyebrow">PROVENANCE STORE</span><h2 id="documents-title">Document library</h2><p class="muted">Uploaded content is isolated by owner and scanned before indexing.</p></div><label for="file-input" class="upload-button primary">Upload document<input id="file-input" type="file" accept=".txt,.json,.csv,.pdf,.md,.png,.jpg,.jpeg,.webp" hidden /></label></div><div class="panel"><div class="table-wrap"><table><caption class="sr-only">Documents in the current workspace</caption><thead><tr><th scope="col">Document</th><th scope="col">Source</th><th scope="col">Status</th><th scope="col">Chunks</th><th scope="col">Ingested</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody id="document-table"><tr><td colspan="6" class="muted">Sign in to load documents.</td></tr></tbody></table></div></div></section>
+
+        <section class="view" id="view-security" aria-labelledby="security-title"><div class="section-head"><div><span class="eyebrow">RAG SECURITY LAB</span><h2 id="security-title">Trust boundary tests</h2><p class="muted">Scan content for common prompt-injection signals before it reaches retrieval.</p></div></div><div class="security-layout"><div class="panel"><span class="eyebrow">CONTROLLED TEST</span><h3>Document instruction scanner</h3><label class="sr-only" for="security-input">Document excerpt</label><textarea id="security-input" rows="8" placeholder="Paste a document excerpt. Retrieved content is data, not system instructions."></textarea><button type="button" class="primary" id="security-button">Run security scan</button></div><div class="panel" id="security-output"><span class="eyebrow">RESULT</span><h3>Awaiting content</h3><p class="muted">The result will distinguish a detection signal from a confirmed attack.</p></div></div></section>
+      </div>
+    </main>
+  </div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "nist": [
+    {"title": "NIST Cybersecurity Framework 2.0", "url": "https://www.nist.gov/cyberframework", "license": "Review NIST terms before redistribution"},
+    {"title": "NIST Vulnerability Database API documentation", "url": "https://nvd.nist.gov/developers/vulnerabilities", "license": "Review NVD API terms before redistribution"}
+  ],
+  "owasp": [
+    {"title": "OWASP Top 10 for Large Language Model Applications", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/", "license": "OWASP project terms; verify current license"},
+    {"title": "OWASP API Security Top 10", "url": "https://owasp.org/API-Security/editions/2023/en/0x00-header/", "license": "OWASP project terms; verify current license"}
+  ]
+}

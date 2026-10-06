@@ -1,0 +1,50 @@
+# Implementation quality gate
+
+Updated 2026-10-03 from executed product-release checks. See [release record](PRODUCT_RELEASE.md); earlier counts remain in the historical continuation records.
+
+- [x] Backend starts in dependency-free fallback
+- [x] FastAPI mode verified with TestClient and a live Uvicorn `/health` + authenticated query smoke test
+- [x] PostgreSQL/pgvector, Redis, and Neo4j live integration contracts verified with isolated local services
+- [x] Authentication hashing/token tests
+- [x] Document upload/chunk/checksum path
+- [x] Hybrid retrieval baseline
+- [x] Intent/OOD/entity extraction
+- [x] Claim verification/provenance
+- [x] Configurable verification pipeline with transformer-NLI adapter + labeled fallback
+- [x] Contradiction regression case
+- [x] CERS and explicit abstention
+- [x] Research paper extraction/comparison helper
+- [x] Log and IOC defensive analysis
+- [x] RAG security pattern scan
+- [x] CyberTrust-QA computed run
+- [x] Empty-data bootstrap pipeline (`--evaluation`, `--minimal`, `--full`) and source manifest
+- [x] Official-source normalization/chunks/BM25/embedding/graph artifacts generated in a live bootstrap run
+- [x] Intent/OOD/verification/reranker/temporal dataset builders and validation
+- [x] TF-IDF + Logistic Regression baseline training scripts (metrics expose small-data weakness)
+- [x] Responsive web client connected to API
+- [x] Flutter/Dart analysis clean and six ordinary shader-enabled Flutter tests passed
+- [ ] Native Android/iOS build/device execution (requires Android SDK/device tooling or macOS/Xcode)
+- [x] Installed backend suite: 77 passed, zero skips; real service/OCR variables configured
+- [x] Web/auth/static-server/active Next.js client tests: 12 passed
+- [x] TypeScript check and 21-page Next.js production build
+- [x] Production web/API smoke: 18 rendered routes and active-client auth/CORS/query/SSE/upload/export/experiment flows
+- [x] Configure/setup/build/up/status/down lifecycle and fresh source-ZIP extraction verified
+- [x] Live isolated Uvicorn auth/SSE/workspace/report/experiment/authorization smoke
+- [x] README, architecture, research, security, and deployment docs
+- [x] Source release excludes credentials, private/user data, dependency/runtime caches, and agent internals; credential checks passed
+- [x] No fabricated benchmark output; pending ablations explicitly unmeasured
+- [x] Source refresh CLI/job abstraction with retrying acquisition scripts
+- [x] OCR/DOCX/table extraction adapters with explicit optional-dependency fallback
+- [x] Markdown/JSON report export; optional DOCX/PDF exporters
+- [x] A-J ablation artifact/report harness with NOT_RUN states for unavailable variants
+- [x] CERS component weights, threshold, explanation, and calibration-pending framework
+- [x] Mobile environment checker and safe platform generator
+- [x] Docker Compose schema/healthcheck/persistent-volume validation
+- [ ] Live Docker startup (Docker Engine/Compose unavailable)
+- [x] Experiment lifecycle, owner isolation, finite metrics, and update-without-metric-loss regression coverage
+- [x] Administrative refresh controls, partial-failure reporting, duplicate-job prevention
+- [x] PDF/DOCX report and extraction round trips with installed optional packages
+- [x] B/C/E/F/G/H/I/J ablations executed over the existing three-question development benchmark
+- [x] npm audit: zero vulnerabilities; pip-audit: no known vulnerabilities in checked backend/document requirements
+- [x] Source ZIP required files, per-file hashes, CRC integrity, excluded paths, and local-credential checks passed
+- [ ] Full production-scale verification: container/native device builds, reviewed transformer weights/inference, target-environment service/worker deployment, human CERS calibration, and unavailable A/D ablations

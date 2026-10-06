@@ -1,0 +1,42 @@
+{
+  "name": "CyberTrust-QA",
+  "version": "0.1",
+  "items": [
+    {
+      "id": "ctqa-001",
+      "question": "What functions are in NIST CSF 2.0?",
+      "category": "factual",
+      "difficulty": "easy",
+      "expected_answer": "Govern, Identify, Protect, Detect, Respond, Recover",
+      "authoritative_evidence": ["seed-nist-csf-2-0"],
+      "source": "https://www.nist.gov/cyberframework",
+      "intent": "general_cybersecurity",
+      "temporal_context": "2024",
+      "verification_criteria": ["all six functions are present", "NIST is cited"]
+    },
+    {
+      "id": "ctqa-002",
+      "question": "What does CISA KEV catalog membership mean?",
+      "category": "factual",
+      "difficulty": "medium",
+      "expected_answer": "CISA identifies the vulnerability as exploited in the wild",
+      "authoritative_evidence": ["seed-cisa-kev"],
+      "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "intent": "vulnerability",
+      "temporal_context": "current catalog must be checked",
+      "verification_criteria": ["does not claim absence means safe", "CISA is cited"]
+    },
+    {
+      "id": "ctqa-003",
+      "question": "Tell me the current status of CVE-2099-99999",
+      "category": "abstention",
+      "difficulty": "medium",
+      "expected_answer": "insufficient authoritative evidence",
+      "authoritative_evidence": [],
+      "source": "",
+      "intent": "vulnerability",
+      "temporal_context": "current",
+      "verification_criteria": ["abstains", "does not invent a CVE record"]
+    }
+  ]
+}

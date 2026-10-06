@@ -1,0 +1,3672 @@
+{
+  "generated_at": "2026-10-03T19:16:33.204728+00:00",
+  "benchmark_sha256": "a1d7d7f0105eabee53129c9bbd8a4413e3570258abf612dc7ecc580afd6d777c",
+  "corpus_documents": 5,
+  "provider": {
+    "configured": false,
+    "provider": "none",
+    "model": "",
+    "reason": "explicit deterministic fallback"
+  },
+  "rows": [
+    {
+      "configuration": "A",
+      "name": "LLM only",
+      "status": "not_run",
+      "reason": "LLM_PROVIDER and LLM_API_KEY are not configured"
+    },
+    {
+      "configuration": "B",
+      "name": "Basic RAG",
+      "status": "measured",
+      "options": {
+        "retrieval_mode": "lexical",
+        "reranker": false,
+        "source_priority": false,
+        "temporal": false,
+        "graph": false,
+        "citation_verification": false,
+        "contradictions": false,
+        "reliability": false,
+        "generation": false
+      },
+      "items": [
+        {
+          "id": "ctqa-001",
+          "latency_seconds": 0.14971,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "66629989-dcdd-4daf-b914-d55f3a52c316",
+            "query": "What functions are in NIST CSF 2.0?",
+            "answer": "Evidence-aware summary for: What functions are in NIST CSF 2.0?\n\nAccording to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover. [C1].\n\nAccording to NIST, # Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:31+00:00",
+            "understanding": {
+              "raw_query": "What functions are in NIST CSF 2.0?",
+              "intent": "compliance",
+              "domain": "compliance",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What functions are in NIST CSF 2.0?",
+                "What functions are in NIST CSF 2.0? cybersecurity evidence",
+                "What functions are in NIST CSF 2.0? authoritative guidance"
+              ],
+              "subqueries": [
+                "What functions are in NIST CSF 2.0?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Overview",
+                "authority_score": 0.98,
+                "relevance_score": 1.0,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 1.0,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "lexical retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Evidence",
+                "authority_score": 0.98,
+                "relevance_score": 0.30434058677768233,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.5308507137657666,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "lexical retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-002",
+          "latency_seconds": 0.061125,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "a89b12ae-8b03-4ad4-b7e1-ead2e04cdfa5",
+            "query": "What does CISA KEV catalog membership mean?",
+            "answer": "Evidence-aware summary for: What does CISA KEV catalog membership mean?\n\nAccording to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies. [C1].\n\nAccording to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:31+00:00",
+            "understanding": {
+              "raw_query": "What does CISA KEV catalog membership mean?",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What does CISA KEV catalog membership mean?",
+                "What does CISA KEV catalog membership mean? cybersecurity evidence",
+                "What does CISA KEV catalog membership mean? authoritative guidance",
+                "What does CISA KEV catalog membership mean? CVE CVSS affected versions remediation"
+              ],
+              "subqueries": [
+                "What does CISA KEV catalog membership mean?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-cisa-kev:chunk:0",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Catalog",
+                "authority_score": 0.98,
+                "relevance_score": 1.0,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 1.0,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:0",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "lexical retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-cisa-kev:chunk:1",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Interpretation",
+                "authority_score": 0.98,
+                "relevance_score": 0.6680637697755953,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.7733328357643754,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:1",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "lexical retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-003",
+          "latency_seconds": 0.053776,
+          "recall_at_10": null,
+          "reciprocal_rank": null,
+          "abstained": true,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "606f34d9-e654-41eb-bcaf-e3bcb0e01f7e",
+            "query": "Tell me the current status of CVE-2099-99999",
+            "answer": "I don't have sufficient authoritative evidence to answer this reliably. The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:31+00:00",
+            "understanding": {
+              "raw_query": "Tell me the current status of CVE-2099-99999",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [
+                {
+                  "type": "cve",
+                  "value": "CVE-2099-99999"
+                }
+              ],
+              "query_type": "identifier_lookup",
+              "requires_temporal_reasoning": true,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "Tell me the current status of CVE-2099-99999",
+                "Tell me the current status of CVE-2099-99999 cybersecurity evidence",
+                "Tell me the current status of CVE-2099-99999 authoritative guidance"
+              ],
+              "subqueries": [
+                "Tell me the current status of CVE-2099-99999"
+              ]
+            },
+            "evidence": [],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none"
+            },
+            "abstained": true,
+            "limitations": [
+              "The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+              "Provide an attributed cybersecurity source or refresh official data."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        }
+      ],
+      "mean_recall_at_10": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "abstention_rate": 0.3333333333333333
+    },
+    {
+      "configuration": "C",
+      "name": "Hybrid RAG",
+      "status": "measured",
+      "options": {
+        "retrieval_mode": "hybrid",
+        "reranker": false,
+        "source_priority": false,
+        "temporal": false,
+        "graph": false,
+        "citation_verification": false,
+        "contradictions": false,
+        "reliability": false,
+        "generation": false
+      },
+      "items": [
+        {
+          "id": "ctqa-001",
+          "latency_seconds": 0.047219,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "ceecb1c3-2eb9-4592-90d1-cfc024acca35",
+            "query": "What functions are in NIST CSF 2.0?",
+            "answer": "Evidence-aware summary for: What functions are in NIST CSF 2.0?\n\nAccording to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover. [C1].\n\nAccording to NIST, # Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:31+00:00",
+            "understanding": {
+              "raw_query": "What functions are in NIST CSF 2.0?",
+              "intent": "compliance",
+              "domain": "compliance",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What functions are in NIST CSF 2.0?",
+                "What functions are in NIST CSF 2.0? cybersecurity evidence",
+                "What functions are in NIST CSF 2.0? authoritative guidance"
+              ],
+              "subqueries": [
+                "What functions are in NIST CSF 2.0?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Overview",
+                "authority_score": 0.98,
+                "relevance_score": 0.692621911696792,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.795081274464528,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Evidence",
+                "authority_score": 0.98,
+                "relevance_score": 0.20700043230369966,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.4659572774497782,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-002",
+          "latency_seconds": 0.051922,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "fb58419d-b470-44eb-9cae-16667e4958df",
+            "query": "What does CISA KEV catalog membership mean?",
+            "answer": "Evidence-aware summary for: What does CISA KEV catalog membership mean?\n\nAccording to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies. [C1].\n\nAccording to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:31+00:00",
+            "understanding": {
+              "raw_query": "What does CISA KEV catalog membership mean?",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What does CISA KEV catalog membership mean?",
+                "What does CISA KEV catalog membership mean? cybersecurity evidence",
+                "What does CISA KEV catalog membership mean? authoritative guidance",
+                "What does CISA KEV catalog membership mean? CVE CVSS affected versions remediation"
+              ],
+              "subqueries": [
+                "What does CISA KEV catalog membership mean?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-cisa-kev:chunk:0",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Catalog",
+                "authority_score": 0.98,
+                "relevance_score": 0.5918018491803358,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.7278678994535572,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:0",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-cisa-kev:chunk:1",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Interpretation",
+                "authority_score": 0.98,
+                "relevance_score": 0.40828977866025806,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.6001501750208171,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:1",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-003",
+          "latency_seconds": 0.053649,
+          "recall_at_10": null,
+          "reciprocal_rank": null,
+          "abstained": true,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "bdd28fb3-8745-4f19-9d4d-02254d57208e",
+            "query": "Tell me the current status of CVE-2099-99999",
+            "answer": "I don't have sufficient authoritative evidence to answer this reliably. The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:31+00:00",
+            "understanding": {
+              "raw_query": "Tell me the current status of CVE-2099-99999",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [
+                {
+                  "type": "cve",
+                  "value": "CVE-2099-99999"
+                }
+              ],
+              "query_type": "identifier_lookup",
+              "requires_temporal_reasoning": true,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "Tell me the current status of CVE-2099-99999",
+                "Tell me the current status of CVE-2099-99999 cybersecurity evidence",
+                "Tell me the current status of CVE-2099-99999 authoritative guidance"
+              ],
+              "subqueries": [
+                "Tell me the current status of CVE-2099-99999"
+              ]
+            },
+            "evidence": [],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none"
+            },
+            "abstained": true,
+            "limitations": [
+              "The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+              "Provide an attributed cybersecurity source or refresh official data."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        }
+      ],
+      "mean_recall_at_10": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "abstention_rate": 0.3333333333333333
+    },
+    {
+      "configuration": "D",
+      "name": "Hybrid RAG + reranker",
+      "status": "not_run",
+      "reason": "Cross-encoder unavailable: {'provider': 'none', 'status': 'not_configured', 'model': 'cross-encoder/ms-marco-MiniLM-L-6-v2'}",
+      "options": {
+        "retrieval_mode": "hybrid",
+        "reranker": true,
+        "source_priority": false,
+        "temporal": false,
+        "graph": false,
+        "citation_verification": false,
+        "contradictions": false,
+        "reliability": false,
+        "generation": false
+      }
+    },
+    {
+      "configuration": "E",
+      "name": "Hybrid + source priority",
+      "status": "measured",
+      "options": {
+        "retrieval_mode": "hybrid",
+        "reranker": false,
+        "source_priority": true,
+        "temporal": false,
+        "graph": false,
+        "citation_verification": false,
+        "contradictions": false,
+        "reliability": false,
+        "generation": false
+      },
+      "items": [
+        {
+          "id": "ctqa-001",
+          "latency_seconds": 0.05466,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "d82cfe80-0e5c-424f-aa5a-b10f1277f803",
+            "query": "What functions are in NIST CSF 2.0?",
+            "answer": "Evidence-aware summary for: What functions are in NIST CSF 2.0?\n\nAccording to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover. [C1].\n\nAccording to NIST, # Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:31+00:00",
+            "understanding": {
+              "raw_query": "What functions are in NIST CSF 2.0?",
+              "intent": "compliance",
+              "domain": "compliance",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What functions are in NIST CSF 2.0?",
+                "What functions are in NIST CSF 2.0? cybersecurity evidence",
+                "What functions are in NIST CSF 2.0? authoritative guidance"
+              ],
+              "subqueries": [
+                "What functions are in NIST CSF 2.0?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Overview",
+                "authority_score": 0.98,
+                "relevance_score": 0.692621911696792,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.8259010620537733,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=True, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Evidence",
+                "authority_score": 0.98,
+                "relevance_score": 0.20700043230369966,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.5516310645414818,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=True, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-002",
+          "latency_seconds": 0.054718,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "fae72543-7583-4fbc-a5b1-35180a58d769",
+            "query": "What does CISA KEV catalog membership mean?",
+            "answer": "Evidence-aware summary for: What does CISA KEV catalog membership mean?\n\nAccording to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies. [C1].\n\nAccording to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:31+00:00",
+            "understanding": {
+              "raw_query": "What does CISA KEV catalog membership mean?",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What does CISA KEV catalog membership mean?",
+                "What does CISA KEV catalog membership mean? cybersecurity evidence",
+                "What does CISA KEV catalog membership mean? authoritative guidance",
+                "What does CISA KEV catalog membership mean? CVE CVSS affected versions remediation"
+              ],
+              "subqueries": [
+                "What does CISA KEV catalog membership mean?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-cisa-kev:chunk:0",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Catalog",
+                "authority_score": 0.98,
+                "relevance_score": 0.5918018491803358,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.7698899162112977,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:0",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=True, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-cisa-kev:chunk:1",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Interpretation",
+                "authority_score": 0.98,
+                "relevance_score": 0.40828977866025806,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.6634584791840142,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:1",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=True, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-003",
+          "latency_seconds": 0.179015,
+          "recall_at_10": null,
+          "reciprocal_rank": null,
+          "abstained": true,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "0bc7df9f-872b-44ad-8542-00c5fc014ae6",
+            "query": "Tell me the current status of CVE-2099-99999",
+            "answer": "I don't have sufficient authoritative evidence to answer this reliably. The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "Tell me the current status of CVE-2099-99999",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [
+                {
+                  "type": "cve",
+                  "value": "CVE-2099-99999"
+                }
+              ],
+              "query_type": "identifier_lookup",
+              "requires_temporal_reasoning": true,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "Tell me the current status of CVE-2099-99999",
+                "Tell me the current status of CVE-2099-99999 cybersecurity evidence",
+                "Tell me the current status of CVE-2099-99999 authoritative guidance"
+              ],
+              "subqueries": [
+                "Tell me the current status of CVE-2099-99999"
+              ]
+            },
+            "evidence": [],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none"
+            },
+            "abstained": true,
+            "limitations": [
+              "The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+              "Provide an attributed cybersecurity source or refresh official data."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        }
+      ],
+      "mean_recall_at_10": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "abstention_rate": 0.3333333333333333
+    },
+    {
+      "configuration": "F",
+      "name": "Hybrid + temporal ranking",
+      "status": "measured",
+      "options": {
+        "retrieval_mode": "hybrid",
+        "reranker": false,
+        "source_priority": false,
+        "temporal": true,
+        "graph": false,
+        "citation_verification": false,
+        "contradictions": false,
+        "reliability": false,
+        "generation": false
+      },
+      "items": [
+        {
+          "id": "ctqa-001",
+          "latency_seconds": 0.056343,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "32c79b3c-eed6-4d55-b401-b9e33ba30d8c",
+            "query": "What functions are in NIST CSF 2.0?",
+            "answer": "Evidence-aware summary for: What functions are in NIST CSF 2.0?\n\nAccording to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover. [C1].\n\nAccording to NIST, # Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "What functions are in NIST CSF 2.0?",
+              "intent": "compliance",
+              "domain": "compliance",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What functions are in NIST CSF 2.0?",
+                "What functions are in NIST CSF 2.0? cybersecurity evidence",
+                "What functions are in NIST CSF 2.0? authoritative guidance"
+              ],
+              "subqueries": [
+                "What functions are in NIST CSF 2.0?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Overview",
+                "authority_score": 0.98,
+                "relevance_score": 0.692621911696792,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.7848011990800685,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=True, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Evidence",
+                "authority_score": 0.98,
+                "relevance_score": 0.20700043230369966,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.4837731530299926,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=True, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [
+              {
+                "date": "2024-02-26",
+                "source": "NIST",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "url": "https://www.nist.gov/cyberframework"
+              },
+              {
+                "date": "2024-02-26",
+                "source": "NIST",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "url": "https://www.nist.gov/cyberframework"
+              }
+            ],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-002",
+          "latency_seconds": 0.048527,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "62d8620f-8c3e-438e-9617-b3f8ee9c9083",
+            "query": "What does CISA KEV catalog membership mean?",
+            "answer": "Evidence-aware summary for: What does CISA KEV catalog membership mean?\n\nAccording to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies. [C1].\n\nAccording to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "What does CISA KEV catalog membership mean?",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What does CISA KEV catalog membership mean?",
+                "What does CISA KEV catalog membership mean? cybersecurity evidence",
+                "What does CISA KEV catalog membership mean? authoritative guidance",
+                "What does CISA KEV catalog membership mean? CVE CVSS affected versions remediation"
+              ],
+              "subqueries": [
+                "What does CISA KEV catalog membership mean?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-cisa-kev:chunk:0",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Catalog",
+                "authority_score": 0.98,
+                "relevance_score": 0.5918018491803358,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.7041474690123998,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:0",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=True, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-cisa-kev:chunk:1",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Interpretation",
+                "authority_score": 0.98,
+                "relevance_score": 0.40828977866025806,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.5873324771531864,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:1",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=True, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-003",
+          "latency_seconds": 0.052563,
+          "recall_at_10": null,
+          "reciprocal_rank": null,
+          "abstained": true,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "2822a7e8-a950-4d65-8400-b2f78817eddc",
+            "query": "Tell me the current status of CVE-2099-99999",
+            "answer": "I don't have sufficient authoritative evidence to answer this reliably. The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "Tell me the current status of CVE-2099-99999",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [
+                {
+                  "type": "cve",
+                  "value": "CVE-2099-99999"
+                }
+              ],
+              "query_type": "identifier_lookup",
+              "requires_temporal_reasoning": true,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "Tell me the current status of CVE-2099-99999",
+                "Tell me the current status of CVE-2099-99999 cybersecurity evidence",
+                "Tell me the current status of CVE-2099-99999 authoritative guidance"
+              ],
+              "subqueries": [
+                "Tell me the current status of CVE-2099-99999"
+              ]
+            },
+            "evidence": [],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none"
+            },
+            "abstained": true,
+            "limitations": [
+              "The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+              "Provide an attributed cybersecurity source or refresh official data."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        }
+      ],
+      "mean_recall_at_10": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "abstention_rate": 0.3333333333333333
+    },
+    {
+      "configuration": "G",
+      "name": "Hybrid + knowledge graph",
+      "status": "measured",
+      "options": {
+        "retrieval_mode": "hybrid",
+        "reranker": false,
+        "source_priority": false,
+        "temporal": false,
+        "graph": true,
+        "citation_verification": false,
+        "contradictions": false,
+        "reliability": false,
+        "generation": false
+      },
+      "items": [
+        {
+          "id": "ctqa-001",
+          "latency_seconds": 0.061383,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "1b7ec084-7a43-47cb-99c4-098d5c05ef3f",
+            "query": "What functions are in NIST CSF 2.0?",
+            "answer": "Evidence-aware summary for: What functions are in NIST CSF 2.0?\n\nAccording to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover. [C1].\n\nAccording to NIST, # Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "What functions are in NIST CSF 2.0?",
+              "intent": "compliance",
+              "domain": "compliance",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What functions are in NIST CSF 2.0?",
+                "What functions are in NIST CSF 2.0? cybersecurity evidence",
+                "What functions are in NIST CSF 2.0? authoritative guidance"
+              ],
+              "subqueries": [
+                "What functions are in NIST CSF 2.0?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Overview",
+                "authority_score": 0.98,
+                "relevance_score": 0.692621911696792,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.7645012254466615,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=True.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Evidence",
+                "authority_score": 0.98,
+                "relevance_score": 0.20700043230369966,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.4480358437017098,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=True.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-002",
+          "latency_seconds": 0.059443,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "37e6c5f3-a9eb-4aac-ac77-b823589faefe",
+            "query": "What does CISA KEV catalog membership mean?",
+            "answer": "Evidence-aware summary for: What does CISA KEV catalog membership mean?\n\nAccording to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies. [C1].\n\nAccording to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "What does CISA KEV catalog membership mean?",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What does CISA KEV catalog membership mean?",
+                "What does CISA KEV catalog membership mean? cybersecurity evidence",
+                "What does CISA KEV catalog membership mean? authoritative guidance",
+                "What does CISA KEV catalog membership mean? CVE CVSS affected versions remediation"
+              ],
+              "subqueries": [
+                "What does CISA KEV catalog membership mean?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-cisa-kev:chunk:0",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Catalog",
+                "authority_score": 0.98,
+                "relevance_score": 0.5918018491803358,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.699872980243805,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:0",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=True.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-cisa-kev:chunk:1",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Interpretation",
+                "authority_score": 0.98,
+                "relevance_score": 0.40828977866025806,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.577067475981555,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:1",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=True.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-003",
+          "latency_seconds": 0.088927,
+          "recall_at_10": null,
+          "reciprocal_rank": null,
+          "abstained": true,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "7fc67719-b436-437e-a3b0-4822de559532",
+            "query": "Tell me the current status of CVE-2099-99999",
+            "answer": "I don't have sufficient authoritative evidence to answer this reliably. The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "Tell me the current status of CVE-2099-99999",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [
+                {
+                  "type": "cve",
+                  "value": "CVE-2099-99999"
+                }
+              ],
+              "query_type": "identifier_lookup",
+              "requires_temporal_reasoning": true,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "Tell me the current status of CVE-2099-99999",
+                "Tell me the current status of CVE-2099-99999 cybersecurity evidence",
+                "Tell me the current status of CVE-2099-99999 authoritative guidance"
+              ],
+              "subqueries": [
+                "Tell me the current status of CVE-2099-99999"
+              ]
+            },
+            "evidence": [],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none"
+            },
+            "abstained": true,
+            "limitations": [
+              "The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+              "Provide an attributed cybersecurity source or refresh official data."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        }
+      ],
+      "mean_recall_at_10": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "abstention_rate": 0.3333333333333333
+    },
+    {
+      "configuration": "H",
+      "name": "Hybrid + citation verification",
+      "status": "measured",
+      "options": {
+        "retrieval_mode": "hybrid",
+        "reranker": false,
+        "source_priority": false,
+        "temporal": false,
+        "graph": false,
+        "citation_verification": true,
+        "contradictions": false,
+        "reliability": false,
+        "generation": false
+      },
+      "items": [
+        {
+          "id": "ctqa-001",
+          "latency_seconds": 0.200061,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "c0a5dd64-3797-4bb7-8c5d-9a36fce66784",
+            "query": "What functions are in NIST CSF 2.0?",
+            "answer": "Evidence-aware summary for: What functions are in NIST CSF 2.0?\n\nAccording to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover. [C1].\n\nAccording to NIST, # Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "What functions are in NIST CSF 2.0?",
+              "intent": "compliance",
+              "domain": "compliance",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What functions are in NIST CSF 2.0?",
+                "What functions are in NIST CSF 2.0? cybersecurity evidence",
+                "What functions are in NIST CSF 2.0? authoritative guidance"
+              ],
+              "subqueries": [
+                "What functions are in NIST CSF 2.0?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Overview",
+                "authority_score": 0.98,
+                "relevance_score": 0.692621911696792,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.795081274464528,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Evidence",
+                "authority_score": 0.98,
+                "relevance_score": 0.20700043230369966,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.4659572774497782,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [
+              {
+                "claim_id": "claim-1",
+                "claim": "Evidence-aware summary for: What functions are in NIST CSF 2.0?",
+                "status": "SUPPORTED",
+                "support_score": 0.6667,
+                "citation_ids": [
+                  "seed-nist-csf-2-0:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-2",
+                "claim": "According to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks.",
+                "status": "SUPPORTED",
+                "support_score": 0.9231,
+                "citation_ids": [
+                  "seed-nist-csf-2-0:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-3",
+                "claim": "It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "status": "SUPPORTED",
+                "support_score": 1.0,
+                "citation_ids": [
+                  "seed-nist-csf-2-0:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-4",
+                "claim": "According to NIST, # Evidence note The CSF is a risk-management framework.",
+                "status": "CONTRADICTED",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-5",
+                "claim": "It does not prescribe one technology or guarantee that an organization is secure.",
+                "status": "SUPPORTED",
+                "support_score": 1.0,
+                "citation_ids": [
+                  "seed-nist-csf-2-0:chunk:1"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-6",
+                "claim": "Organizations should use organizational context and risk outcomes when applying the framework.",
+                "status": "CONTRADICTED",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-7",
+                "claim": "Interpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+                "status": "UNKNOWN",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              }
+            ],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.7217,
+              "percentage": 72.2,
+              "components": {
+                "source_authority": 0.98,
+                "relevance": 0.4498,
+                "entailment": 0.5128,
+                "agreement": 1.0,
+                "recency": 0.6747,
+                "retrieval_confidence": 0.7951
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "heuristic_fallback"
+              ],
+              "verification_engine": "heuristic_fallback",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-002",
+          "latency_seconds": 0.060224,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "a0a98960-114b-4e60-a54b-7b5a61786d6b",
+            "query": "What does CISA KEV catalog membership mean?",
+            "answer": "Evidence-aware summary for: What does CISA KEV catalog membership mean?\n\nAccording to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies. [C1].\n\nAccording to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "What does CISA KEV catalog membership mean?",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What does CISA KEV catalog membership mean?",
+                "What does CISA KEV catalog membership mean? cybersecurity evidence",
+                "What does CISA KEV catalog membership mean? authoritative guidance",
+                "What does CISA KEV catalog membership mean? CVE CVSS affected versions remediation"
+              ],
+              "subqueries": [
+                "What does CISA KEV catalog membership mean?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-cisa-kev:chunk:0",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Catalog",
+                "authority_score": 0.98,
+                "relevance_score": 0.5918018491803358,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.7278678994535572,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:0",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-cisa-kev:chunk:1",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Interpretation",
+                "authority_score": 0.98,
+                "relevance_score": 0.40828977866025806,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.6001501750208171,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:1",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [
+              {
+                "claim_id": "claim-1",
+                "claim": "Evidence-aware summary for: What does CISA KEV catalog membership mean?",
+                "status": "PARTIALLY_SUPPORTED",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-2",
+                "claim": "According to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild.",
+                "status": "SUPPORTED",
+                "support_score": 0.9231,
+                "citation_ids": [
+                  "seed-cisa-kev:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-3",
+                "claim": "The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "status": "SUPPORTED",
+                "support_score": 1.0,
+                "citation_ids": [
+                  "seed-cisa-kev:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-4",
+                "claim": "According to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited.",
+                "status": "SUPPORTED",
+                "support_score": 0.8462,
+                "citation_ids": [
+                  "seed-cisa-kev:chunk:1"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-5",
+                "claim": "Catalog status and due dates should be checked against the current official catalog.",
+                "status": "CONTRADICTED",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-6",
+                "claim": "Interpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+                "status": "UNKNOWN",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              }
+            ],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.6888,
+              "percentage": 68.9,
+              "components": {
+                "source_authority": 0.98,
+                "relevance": 0.5,
+                "entailment": 0.4615,
+                "agreement": 1.0,
+                "recency": 0.45,
+                "retrieval_confidence": 0.7279
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "heuristic_fallback"
+              ],
+              "verification_engine": "heuristic_fallback",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-003",
+          "latency_seconds": 0.061512,
+          "recall_at_10": null,
+          "reciprocal_rank": null,
+          "abstained": true,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "4c5f64ae-a2b1-4700-8aa7-284e3e073272",
+            "query": "Tell me the current status of CVE-2099-99999",
+            "answer": "I don't have sufficient authoritative evidence to answer this reliably. The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "Tell me the current status of CVE-2099-99999",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [
+                {
+                  "type": "cve",
+                  "value": "CVE-2099-99999"
+                }
+              ],
+              "query_type": "identifier_lookup",
+              "requires_temporal_reasoning": true,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "Tell me the current status of CVE-2099-99999",
+                "Tell me the current status of CVE-2099-99999 cybersecurity evidence",
+                "Tell me the current status of CVE-2099-99999 authoritative guidance"
+              ],
+              "subqueries": [
+                "Tell me the current status of CVE-2099-99999"
+              ]
+            },
+            "evidence": [],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none"
+            },
+            "abstained": true,
+            "limitations": [
+              "The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+              "Provide an attributed cybersecurity source or refresh official data."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        }
+      ],
+      "mean_recall_at_10": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "abstention_rate": 0.3333333333333333
+    },
+    {
+      "configuration": "I",
+      "name": "Hybrid + contradiction detection",
+      "status": "measured",
+      "options": {
+        "retrieval_mode": "hybrid",
+        "reranker": false,
+        "source_priority": false,
+        "temporal": false,
+        "graph": false,
+        "citation_verification": false,
+        "contradictions": true,
+        "reliability": false,
+        "generation": false
+      },
+      "items": [
+        {
+          "id": "ctqa-001",
+          "latency_seconds": 0.096123,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "9a0646e1-e41b-422a-9176-404122eeceb7",
+            "query": "What functions are in NIST CSF 2.0?",
+            "answer": "Evidence-aware summary for: What functions are in NIST CSF 2.0?\n\nAccording to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover. [C1].\n\nAccording to NIST, # Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "What functions are in NIST CSF 2.0?",
+              "intent": "compliance",
+              "domain": "compliance",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What functions are in NIST CSF 2.0?",
+                "What functions are in NIST CSF 2.0? cybersecurity evidence",
+                "What functions are in NIST CSF 2.0? authoritative guidance"
+              ],
+              "subqueries": [
+                "What functions are in NIST CSF 2.0?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Overview",
+                "authority_score": 0.98,
+                "relevance_score": 0.692621911696792,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.795081274464528,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Evidence",
+                "authority_score": 0.98,
+                "relevance_score": 0.20700043230369966,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.4659572774497782,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-002",
+          "latency_seconds": 0.059525,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "6655d95a-70ff-45fd-905a-dab283aebc13",
+            "query": "What does CISA KEV catalog membership mean?",
+            "answer": "Evidence-aware summary for: What does CISA KEV catalog membership mean?\n\nAccording to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies. [C1].\n\nAccording to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:32+00:00",
+            "understanding": {
+              "raw_query": "What does CISA KEV catalog membership mean?",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What does CISA KEV catalog membership mean?",
+                "What does CISA KEV catalog membership mean? cybersecurity evidence",
+                "What does CISA KEV catalog membership mean? authoritative guidance",
+                "What does CISA KEV catalog membership mean? CVE CVSS affected versions remediation"
+              ],
+              "subqueries": [
+                "What does CISA KEV catalog membership mean?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-cisa-kev:chunk:0",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Catalog",
+                "authority_score": 0.98,
+                "relevance_score": 0.5918018491803358,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.7278678994535572,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:0",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-cisa-kev:chunk:1",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Interpretation",
+                "authority_score": 0.98,
+                "relevance_score": 0.40828977866025806,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.6001501750208171,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:1",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=False, temporal=False, knowledge_graph=False.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "disabled_by_configuration"
+                  }
+                }
+              }
+            ],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none",
+              "status": "disabled_by_configuration"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-003",
+          "latency_seconds": 0.061198,
+          "recall_at_10": null,
+          "reciprocal_rank": null,
+          "abstained": true,
+          "cers": null,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "45d31388-63e8-4b0b-9c67-d69e0d1348d6",
+            "query": "Tell me the current status of CVE-2099-99999",
+            "answer": "I don't have sufficient authoritative evidence to answer this reliably. The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:33+00:00",
+            "understanding": {
+              "raw_query": "Tell me the current status of CVE-2099-99999",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [
+                {
+                  "type": "cve",
+                  "value": "CVE-2099-99999"
+                }
+              ],
+              "query_type": "identifier_lookup",
+              "requires_temporal_reasoning": true,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "Tell me the current status of CVE-2099-99999",
+                "Tell me the current status of CVE-2099-99999 cybersecurity evidence",
+                "Tell me the current status of CVE-2099-99999 authoritative guidance"
+              ],
+              "subqueries": [
+                "Tell me the current status of CVE-2099-99999"
+              ]
+            },
+            "evidence": [],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none"
+            },
+            "abstained": true,
+            "limitations": [
+              "The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+              "Provide an attributed cybersecurity source or refresh official data."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        }
+      ],
+      "mean_recall_at_10": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "abstention_rate": 0.3333333333333333
+    },
+    {
+      "configuration": "J",
+      "name": "Complete configured CyberSecRA-X",
+      "status": "measured",
+      "options": {
+        "retrieval_mode": "hybrid",
+        "reranker": true,
+        "source_priority": true,
+        "temporal": true,
+        "graph": true,
+        "citation_verification": true,
+        "contradictions": true,
+        "reliability": true,
+        "generation": false
+      },
+      "items": [
+        {
+          "id": "ctqa-001",
+          "latency_seconds": 0.051278,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": 0.7213,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "1a6cbf99-f5b4-4dc0-8e1c-2a70c26b4679",
+            "query": "What functions are in NIST CSF 2.0?",
+            "answer": "Evidence-aware summary for: What functions are in NIST CSF 2.0?\n\nAccording to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover. [C1].\n\nAccording to NIST, # Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:33+00:00",
+            "understanding": {
+              "raw_query": "What functions are in NIST CSF 2.0?",
+              "intent": "compliance",
+              "domain": "compliance",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What functions are in NIST CSF 2.0?",
+                "What functions are in NIST CSF 2.0? cybersecurity evidence",
+                "What functions are in NIST CSF 2.0? authoritative guidance"
+              ],
+              "subqueries": [
+                "What functions are in NIST CSF 2.0?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks. It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Overview",
+                "authority_score": 0.98,
+                "relevance_score": 0.692621911696792,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.7905369832456562,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:0",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=True, temporal=True, knowledge_graph=True.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "not_configured",
+                    "model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                "document_id": "seed-nist-csf-2-0",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "text": "# Evidence note The CSF is a risk-management framework. It does not prescribe one technology or guarantee that an organization is secure. Organizations should use organizational context and risk outcomes when applying the framework.",
+                "source": "NIST",
+                "source_type": "official_framework",
+                "url": "https://www.nist.gov/cyberframework",
+                "page_number": null,
+                "section": "Evidence",
+                "authority_score": 0.98,
+                "relevance_score": 0.20700043230369966,
+                "recency_score": 0.6746575342465753,
+                "graph_score": 0.0,
+                "final_score": 0.5436939854845939,
+                "provenance": {
+                  "document_id": "seed-nist-csf-2-0",
+                  "chunk_id": "seed-nist-csf-2-0:chunk:1",
+                  "source": "NIST",
+                  "publication_date": "2024-02-26",
+                  "update_date": "2024-02-26",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=True, temporal=True, knowledge_graph=True.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "not_configured",
+                    "model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+                  }
+                }
+              }
+            ],
+            "claims": [
+              {
+                "claim_id": "claim-1",
+                "claim": "Evidence-aware summary for: What functions are in NIST CSF 2.0?",
+                "status": "SUPPORTED",
+                "support_score": 0.6667,
+                "citation_ids": [
+                  "seed-nist-csf-2-0:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-2",
+                "claim": "According to NIST, # Overview The NIST Cybersecurity Framework (CSF) 2.0 provides guidance to help organizations manage cybersecurity risks.",
+                "status": "SUPPORTED",
+                "support_score": 0.9231,
+                "citation_ids": [
+                  "seed-nist-csf-2-0:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-3",
+                "claim": "It is organized around the Functions Govern, Identify, Protect, Detect, Respond, and Recover.",
+                "status": "SUPPORTED",
+                "support_score": 1.0,
+                "citation_ids": [
+                  "seed-nist-csf-2-0:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-4",
+                "claim": "According to NIST, # Evidence note The CSF is a risk-management framework.",
+                "status": "CONTRADICTED",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-5",
+                "claim": "It does not prescribe one technology or guarantee that an organization is secure.",
+                "status": "SUPPORTED",
+                "support_score": 1.0,
+                "citation_ids": [
+                  "seed-nist-csf-2-0:chunk:1"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-6",
+                "claim": "Organizations should use organizational context and risk outcomes when applying the framework.",
+                "status": "CONTRADICTED",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-7",
+                "claim": "Interpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+                "status": "UNKNOWN",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              }
+            ],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.7213,
+              "percentage": 72.1,
+              "components": {
+                "source_authority": 0.98,
+                "relevance": 0.4498,
+                "entailment": 0.5128,
+                "agreement": 1.0,
+                "recency": 0.6747,
+                "retrieval_confidence": 0.7905
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "heuristic_fallback"
+              ],
+              "verification_engine": "heuristic_fallback"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [
+              {
+                "date": "2024-02-26",
+                "source": "NIST",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "url": "https://www.nist.gov/cyberframework"
+              },
+              {
+                "date": "2024-02-26",
+                "source": "NIST",
+                "title": "NIST Cybersecurity Framework 2.0",
+                "url": "https://www.nist.gov/cyberframework"
+              }
+            ],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-002",
+          "latency_seconds": 0.054223,
+          "recall_at_10": 1.0,
+          "reciprocal_rank": 1.0,
+          "abstained": false,
+          "cers": 0.6884,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "c0736f20-ba5e-4799-a50f-7782ce275927",
+            "query": "What does CISA KEV catalog membership mean?",
+            "answer": "Evidence-aware summary for: What does CISA KEV catalog membership mean?\n\nAccording to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies. [C1].\n\nAccording to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog. [C2].\n\nInterpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:33+00:00",
+            "understanding": {
+              "raw_query": "What does CISA KEV catalog membership mean?",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [],
+              "query_type": "explanation",
+              "requires_temporal_reasoning": false,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "What does CISA KEV catalog membership mean?",
+                "What does CISA KEV catalog membership mean? cybersecurity evidence",
+                "What does CISA KEV catalog membership mean? authoritative guidance",
+                "What does CISA KEV catalog membership mean? CVE CVSS affected versions remediation"
+              ],
+              "subqueries": [
+                "What does CISA KEV catalog membership mean?"
+              ]
+            },
+            "evidence": [
+              {
+                "chunk_id": "seed-cisa-kev:chunk:0",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild. The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Catalog",
+                "authority_score": 0.98,
+                "relevance_score": 0.5918018491803358,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.7244009245901679,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:0",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=True, temporal=True, knowledge_graph=True.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "not_configured",
+                    "model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+                  }
+                }
+              },
+              {
+                "chunk_id": "seed-cisa-kev:chunk:1",
+                "document_id": "seed-cisa-kev",
+                "title": "CISA Known Exploited Vulnerabilities Catalog",
+                "text": "# Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited. Catalog status and due dates should be checked against the current official catalog.",
+                "source": "CISA",
+                "source_type": "official_catalog",
+                "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "page_number": null,
+                "section": "Interpretation",
+                "authority_score": 0.98,
+                "relevance_score": 0.40828977866025806,
+                "recency_score": 0.45,
+                "graph_score": 0.0,
+                "final_score": 0.6286126312656128,
+                "provenance": {
+                  "document_id": "seed-cisa-kev",
+                  "chunk_id": "seed-cisa-kev:chunk:1",
+                  "source": "CISA",
+                  "publication_date": "",
+                  "update_date": "",
+                  "retrieved_at": "2026-10-03",
+                  "ranking_explanation": "hybrid retrieval with corpus-IDF BM25 and cached TF-IDF cosine; source_priority=True, temporal=True, knowledge_graph=True.",
+                  "graph_relationships": [],
+                  "reranker_status": {
+                    "provider": "none",
+                    "status": "not_configured",
+                    "model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+                  }
+                }
+              }
+            ],
+            "claims": [
+              {
+                "claim_id": "claim-1",
+                "claim": "Evidence-aware summary for: What does CISA KEV catalog membership mean?",
+                "status": "PARTIALLY_SUPPORTED",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-2",
+                "claim": "According to CISA, # Catalog meaning The CISA Known Exploited Vulnerabilities (KEV) Catalog is an authoritative source of vulnerabilities that CISA says have been exploited in the wild.",
+                "status": "SUPPORTED",
+                "support_score": 0.9231,
+                "citation_ids": [
+                  "seed-cisa-kev:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-3",
+                "claim": "The catalog includes fields such as the vulnerability identifier, vendor, product, due date, and required action for federal civilian agencies.",
+                "status": "SUPPORTED",
+                "support_score": 1.0,
+                "citation_ids": [
+                  "seed-cisa-kev:chunk:0"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-4",
+                "claim": "According to CISA, # Interpretation Absence from the KEV Catalog should not be interpreted as evidence that a vulnerability cannot be exploited.",
+                "status": "SUPPORTED",
+                "support_score": 0.8462,
+                "citation_ids": [
+                  "seed-cisa-kev:chunk:1"
+                ],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-5",
+                "claim": "Catalog status and due dates should be checked against the current official catalog.",
+                "status": "CONTRADICTED",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              },
+              {
+                "claim_id": "claim-6",
+                "claim": "Interpretation: the citations support the statements above, but they do not establish facts beyond the quoted scope.",
+                "status": "UNKNOWN",
+                "support_score": 0.0,
+                "citation_ids": [],
+                "explanation": "Heuristic overlap/polarity fallback; not transformer-NLI evidence. Model: heuristic-overlap-fallback.",
+                "verification_engine": "heuristic_fallback",
+                "model": "heuristic-overlap-fallback",
+                "contradictions": []
+              }
+            ],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.6884,
+              "percentage": 68.8,
+              "components": {
+                "source_authority": 0.98,
+                "relevance": 0.5,
+                "entailment": 0.4615,
+                "agreement": 1.0,
+                "recency": 0.45,
+                "retrieval_confidence": 0.7244
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "heuristic_fallback"
+              ],
+              "verification_engine": "heuristic_fallback"
+            },
+            "abstained": false,
+            "limitations": [
+              "CERS is project-defined and not a calibrated probability.",
+              "Answers reflect the indexed source snapshots; check source dates before relying on current status."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        },
+        {
+          "id": "ctqa-003",
+          "latency_seconds": 0.077496,
+          "recall_at_10": null,
+          "reciprocal_rank": null,
+          "abstained": true,
+          "cers": 0.0,
+          "graph_edges": 0,
+          "answer": {
+            "answer_id": "859ede53-e4c2-4d6c-8e66-54c312c90ee9",
+            "query": "Tell me the current status of CVE-2099-99999",
+            "answer": "I don't have sufficient authoritative evidence to answer this reliably. The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+            "mode": "RESEARCHER",
+            "created_at": "2026-10-03T19:16:33+00:00",
+            "understanding": {
+              "raw_query": "Tell me the current status of CVE-2099-99999",
+              "intent": "vulnerability",
+              "domain": "vulnerability management",
+              "complexity": "simple",
+              "language": "en",
+              "entities": [
+                {
+                  "type": "cve",
+                  "value": "CVE-2099-99999"
+                }
+              ],
+              "query_type": "identifier_lookup",
+              "requires_temporal_reasoning": true,
+              "requires_multihop_reasoning": false,
+              "is_in_domain": true,
+              "out_of_domain_reason": "",
+              "classification_engine": "deterministic_keywords",
+              "ood_engine": "deterministic_keywords",
+              "expanded_queries": [
+                "Tell me the current status of CVE-2099-99999",
+                "Tell me the current status of CVE-2099-99999 cybersecurity evidence",
+                "Tell me the current status of CVE-2099-99999 authoritative guidance"
+              ],
+              "subqueries": [
+                "Tell me the current status of CVE-2099-99999"
+              ]
+            },
+            "evidence": [],
+            "claims": [],
+            "cers": {
+              "name": "CERS",
+              "label": "Cyber Evidence Reliability Score",
+              "score": 0.0,
+              "percentage": 0.0,
+              "components": {
+                "source_authority": 0.0,
+                "relevance": 0.0,
+                "entailment": 0.0,
+                "agreement": 0.0,
+                "recency": 0.0,
+                "retrieval_confidence": 0.0
+              },
+              "weights": {
+                "source_authority": 0.22,
+                "relevance": 0.18,
+                "entailment": 0.25,
+                "agreement": 0.15,
+                "recency": 0.1,
+                "retrieval_confidence": 0.1
+              },
+              "abstention_threshold": 0.42,
+              "calibration_status": "pending-human-calibration",
+              "methodology": "Project-defined metric combining authority, relevance, claim support, cross-source agreement, recency, and retrieval confidence. It is not a validated probability of truth.",
+              "verification_engines": [
+                "none"
+              ],
+              "verification_engine": "none"
+            },
+            "abstained": true,
+            "limitations": [
+              "The requested identifier was not present in the retrieved evidence; an authoritative lookup is required.",
+              "Provide an attributed cybersecurity source or refresh official data."
+            ],
+            "timeline": [],
+            "related_entities": [],
+            "conflicts": [],
+            "agent_plan": {
+              "agents": [
+                "RetrievalAgent",
+                "VulnerabilityAgent",
+                "VerificationAgent",
+                "ReportGenerationAgent"
+              ],
+              "reason": "Selected from explicit intent, graph, and research requirements; no unrestricted agent is created."
+            }
+          }
+        }
+      ],
+      "mean_recall_at_10": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "abstention_rate": 0.3333333333333333,
+      "mean_cers": 0.4699
+    }
+  ],
+  "note": "B is lexical; C is the hybrid baseline; D-I each add exactly one component to C (not cumulative). J enables all configured components. B-J use the same deterministic evidence generator to isolate retrieval/verification changes. NOT_RUN rows contain no metrics. Unlabeled claim support is not ground-truth accuracy."
+}

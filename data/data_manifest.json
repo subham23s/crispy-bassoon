@@ -1,0 +1,412 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-10-03T01:14:08+00:00",
+  "sources": [
+    {
+      "source": "MITRE ATT&CK",
+      "version": "bundle--6198013c-6f02-42a4-9713-38ea1301a1aa",
+      "downloaded_at": "2026-10-03T00:16:09+00:00",
+      "processed_at": "2026-10-03T01:07:36+00:00",
+      "records": 25640,
+      "license": "MITRE ATT&CK data; review current MITRE terms at https://attack.mitre.org/resources/terms-of-use/",
+      "url": "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack.json",
+      "checksum": "dc1639caa5501d720e280cf1cbd8fbe009884a0c9b3e6e9ed9d0c25166c3d8f4",
+      "status": "processed",
+      "path": "data/raw/mitre/enterprise-attack.json",
+      "object_types": [
+        "ATTACK_TACTIC",
+        "ATTACK_TECHNIQUE",
+        "CAMPAIGN",
+        "DATA_COMPONENT",
+        "IDENTITY",
+        "MALWARE",
+        "MARKING-DEFINITION",
+        "MITIGATION",
+        "RELATIONSHIP",
+        "SOFTWARE",
+        "THREAT_ACTOR",
+        "X-MITRE-ANALYTIC",
+        "X-MITRE-COLLECTION",
+        "X-MITRE-DETECTION-STRATEGY",
+        "X-MITRE-MATRIX"
+      ]
+    },
+    {
+      "source": "CISA KEV",
+      "version": "2026.10.02",
+      "downloaded_at": "2026-10-03T00:16:15+00:00",
+      "processed_at": "2026-10-03T01:07:38+00:00",
+      "records": 1733,
+      "license": "CISA public catalog; follow CISA terms and attribution requirements.",
+      "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+      "checksum": "d2c8c6cb23291b46ff2b086197641a6b1fa35e6b746bba714cc280a1778f9e48",
+      "status": "processed",
+      "path": "data/raw/cisa/known_exploited_vulnerabilities.json"
+    },
+    {
+      "source": "NVD",
+      "version": "API v2.0",
+      "downloaded_at": "2026-10-03T01:07:41+00:00",
+      "processed_at": "2026-10-03T01:07:41+00:00",
+      "records": 100,
+      "license": "NVD data/API; follow NVD API terms, rate limits, and attribution guidance.",
+      "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+      "checksum": "4ad4a9c5387936c9ae14305f92359ebac426ccf53313d4b7df64bdc21184486f",
+      "status": "processed",
+      "path": "data/raw/nvd/response-20261003T010741Z-0.json",
+      "query": {
+        "cve": null,
+        "start_date": "2026-09-26T01:07:39.000Z",
+        "end_date": "2026-10-03T01:07:39.000Z",
+        "update": false
+      },
+      "pages_downloaded": 1
+    },
+    {
+      "source": "NIST",
+      "version": "configured-pages",
+      "downloaded_at": null,
+      "processed_at": "2026-10-03T01:07:42.343457+00:00",
+      "records": 2,
+      "license": "per-page terms in data/source_config.json",
+      "url": "data/source_config.json",
+      "checksum": "",
+      "status": "processed",
+      "failures": []
+    },
+    {
+      "source": "OWASP",
+      "version": "configured-pages",
+      "downloaded_at": null,
+      "processed_at": "2026-10-03T01:07:43.085907+00:00",
+      "records": 2,
+      "license": "per-page terms in data/source_config.json",
+      "url": "data/source_config.json",
+      "checksum": "",
+      "status": "processed",
+      "failures": []
+    },
+    {
+      "source": "MITRE ATLAS",
+      "version": "v6-latest",
+      "downloaded_at": "2026-10-03T01:08:15+00:00",
+      "processed_at": "2026-10-03T01:08:18+00:00",
+      "records": 535,
+      "license": "MITRE ATLAS data; review current MITRE terms at https://atlas.mitre.org/resources/terms-of-use/",
+      "url": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.09.yaml",
+      "checksum": "935efa93e28294432d3e2f537eb94991ef8d1f8c58341cd360ea3321ddb66688",
+      "status": "processed",
+      "path": "data/raw/atlas/ATLAS-2026.09.yaml",
+      "entity_types": [
+        "ATLAS_MITIGATION",
+        "ATLAS_TACTIC",
+        "ATLAS_TECHNIQUE"
+      ]
+    },
+    {
+      "source": "CWE",
+      "version": "latest",
+      "downloaded_at": "2026-10-03T01:08:26+00:00",
+      "processed_at": "2026-10-03T01:08:26+00:00",
+      "records": 1450,
+      "license": "CWE data; subject to MITRE CWE terms of use.",
+      "url": "https://cwe.mitre.org/data/xml/cwec_latest.xml.zip",
+      "checksum": "3976f599e5e5200219a3108bb896d06e2a88fbb293369e1883cb423a5e9d7d50",
+      "status": "processed",
+      "path": "data/raw/cwe/cwe_latest.xml.zip"
+    },
+    {
+      "source": "CAPEC",
+      "version": "latest",
+      "downloaded_at": "2026-10-03T01:08:31+00:00",
+      "processed_at": "2026-10-03T01:08:31+00:00",
+      "records": 706,
+      "license": "CAPEC data; subject to MITRE CAPEC terms of use.",
+      "url": "https://capec.mitre.org/data/archive/capec_latest.zip",
+      "checksum": "c56527f3d64b7164fcdae73c1a7545ee6e83b1150546c07a93339b1543a3041d",
+      "status": "processed",
+      "path": "data/raw/capec/capec_latest.zip"
+    },
+    {
+      "source": "OpenAlex",
+      "version": "API",
+      "downloaded_at": "2026-10-03T01:08:35+00:00",
+      "processed_at": "2026-10-03T01:08:35+00:00",
+      "records": 25,
+      "license": "OpenAlex metadata API; individual works retain their own licenses. No paywall bypass.",
+      "url": "https://api.openalex.org/works",
+      "checksum": "2c9347f029e4b5eda651010532f2b3066dbc507882ede7530ad44bb176846e73",
+      "status": "processed",
+      "path": "data/raw/papers/openalex.json",
+      "query": "cybersecurity",
+      "full_text_requested": false
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "intent_model",
+      "path": "data/ml/intent/intent_model.pkl",
+      "checksum": "5d9cf261c400d1a32697cf2473835afae5c7e9e7dbd690f968db6a11bb388b9a",
+      "records": 14,
+      "status": "processed",
+      "created_at": "2026-10-03T01:04:35+00:00",
+      "model": "tfidf-logistic-regression"
+    },
+    {
+      "name": "ood_model",
+      "path": "data/ml/ood/ood_model.pkl",
+      "checksum": "f9ebb2f1e5edf4a476045251171ec2845385437fc2679132966e2b86723ebd67",
+      "records": 6,
+      "status": "processed",
+      "created_at": "2026-10-03T01:04:38+00:00",
+      "model": "tfidf-logistic-regression-ood"
+    },
+    {
+      "name": "normalized_mitre_attack",
+      "path": "data/normalized/mitre_attack.jsonl",
+      "checksum": "4e8d3497c4943989f5d5e0c28583e1bfa4331ca3b5ff86c8b39cf9d77e3ca4f8",
+      "records": 25640,
+      "status": "processed",
+      "created_at": "2026-10-03T01:07:37+00:00"
+    },
+    {
+      "name": "normalized_cisa_kev",
+      "path": "data/normalized/cisa_kev.jsonl",
+      "checksum": "bbef26d2fb44905c44b7eb8650e96f554061b5aa63ae349d17c4c55ada0d9e6c",
+      "records": 1733,
+      "status": "processed",
+      "created_at": "2026-10-03T01:07:38+00:00"
+    },
+    {
+      "name": "normalized_nvd",
+      "path": "data/normalized/nvd.jsonl",
+      "checksum": "506499f626be31ce4fbbe2ce94c4c9078574c013c0f17d0f1374892355c07650",
+      "records": 100,
+      "status": "processed",
+      "created_at": "2026-10-03T01:07:41+00:00"
+    },
+    {
+      "name": "normalized_nist_pages",
+      "path": "data/normalized/nist_pages.jsonl",
+      "checksum": "4f48276f05b6c5289a5896b78950eea429d3696e53765ffbaad1719922562a7a",
+      "records": 2,
+      "status": "processed",
+      "created_at": "2026-10-03T01:07:42+00:00"
+    },
+    {
+      "name": "normalized_owasp_pages",
+      "path": "data/normalized/owasp_pages.jsonl",
+      "checksum": "00a4fb34aadf99bfd923246a7cef60eab6a753f6ca5e7a22af9df487cb6bb440",
+      "records": 2,
+      "status": "processed",
+      "created_at": "2026-10-03T01:07:43+00:00"
+    },
+    {
+      "name": "normalized_mitre_atlas",
+      "path": "data/normalized/mitre_atlas.jsonl",
+      "checksum": "1a09536b659c5d2ea66c6995730813a2a477fa3df80fc1c8d213044f8a3364af",
+      "records": 535,
+      "status": "processed",
+      "created_at": "2026-10-03T01:08:19+00:00"
+    },
+    {
+      "name": "normalized_cwe",
+      "path": "data/normalized/cwe.jsonl",
+      "checksum": "5a905b61bd7fc72f9c824fa6ad29dc4c275ba797eb8a31bdc4338775cb583fb0",
+      "records": 1450,
+      "status": "processed",
+      "created_at": "2026-10-03T01:08:26+00:00"
+    },
+    {
+      "name": "normalized_capec",
+      "path": "data/normalized/capec.jsonl",
+      "checksum": "8c5f66e9204b75bd01beaae5fbac8ebed81fe285f563d9f008927e4ac83911d6",
+      "records": 706,
+      "status": "processed",
+      "created_at": "2026-10-03T01:08:32+00:00"
+    },
+    {
+      "name": "normalized_research_papers",
+      "path": "data/normalized/research_papers.jsonl",
+      "checksum": "f5521cfb7c129c912ee68c7db461e5fc532a7726b8d0c619cff93a884f250fef",
+      "records": 25,
+      "status": "processed",
+      "created_at": "2026-10-03T01:08:35+00:00"
+    },
+    {
+      "name": "paper_sections",
+      "path": "data/normalized/paper_sections.jsonl",
+      "checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "records": 0,
+      "status": "not_downloaded",
+      "created_at": "2026-10-03T01:08:36+00:00"
+    },
+    {
+      "name": "cyber_entities",
+      "path": "data/normalized/cyber_entities.jsonl",
+      "checksum": "ec431aa0aca85304bf50413d48c0c8a8214c156d5fa1fa6af133beffc76fd05e",
+      "records": 8931,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:23+00:00"
+    },
+    {
+      "name": "cyber_relationships",
+      "path": "data/normalized/cyber_relationships.jsonl",
+      "checksum": "4b7fd421a4598d1260a4f01a7c21fc63cf68ed6a61807d7cd1a04ba8451ce6ca",
+      "records": 21262,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:23+00:00"
+    },
+    {
+      "name": "cyber_chunks",
+      "path": "data/chunks/cyber_chunks.jsonl",
+      "checksum": "9f8d26c9cf6e10bdce2f819b83bd394268f06c117c666a92bd1ed5d33e117d65",
+      "records": 9437,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:25+00:00",
+      "chunk_strategy": "sentence-aware",
+      "max_chars": 1200
+    },
+    {
+      "name": "tfidf_lite_embeddings",
+      "path": "data/embeddings/tfidf-lite.jsonl",
+      "checksum": "38783029d406777d2afcfb357aec93b61d719c40cc9e25a63258bac14a115b55",
+      "records": 9437,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:29+00:00",
+      "embedding_model": "tfidf-lite",
+      "dimension": 256
+    },
+    {
+      "name": "vector_index",
+      "path": "data/processed/vector_index.sqlite",
+      "checksum": "177720b738baaa12fc189968b78615294dfa7cec4a0b22e2f6baa68f64d94508",
+      "records": 9437,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:46+00:00",
+      "model_name": "tfidf-lite",
+      "dimension": 256,
+      "index_type": "sqlite-persistent-vector-store"
+    },
+    {
+      "name": "bm25_index",
+      "path": "data/processed/bm25_index.json",
+      "checksum": "5d18d1903181b478d39fda955cad6368df97f0c671bbb125ead90ba2d61e4557",
+      "records": 9437,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:48+00:00",
+      "terms": 23874
+    },
+    {
+      "name": "cyber_graph",
+      "path": "data/graph/cyber_graph.json",
+      "checksum": "8f9b76a6287fdc7124c46982b4178967d40f996d3443b19ed6ea0a27aec5d611",
+      "records": 30193,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:51+00:00",
+      "nodes": 8931,
+      "edges": 21262
+    },
+    {
+      "name": "intent_dataset",
+      "path": "data/ml/intent/intent_dataset.csv",
+      "checksum": "088f908e3f629bc53f3555f5749cceb0472a1b545c3ba4bc15070087b82aa3ff",
+      "records": 28,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:53+00:00",
+      "classes": [
+        "vulnerability",
+        "threat_intelligence",
+        "malware",
+        "network_security",
+        "web_security",
+        "cloud_security",
+        "cryptography",
+        "digital_forensics",
+        "incident_response",
+        "ai_security",
+        "threat_hunting",
+        "research",
+        "compliance",
+        "general_cybersecurity"
+      ],
+      "synthetic_rows": 0,
+      "duplicate_policy": "exact and token-Jaccard >= 0.82 removed before split"
+    },
+    {
+      "name": "ood_dataset",
+      "path": "data/ml/ood/ood_dataset.csv",
+      "checksum": "fc42d3e868ef4cc12d867f595df9021bb86cf89660fe64c0a4722d0bb9aa972c",
+      "records": 9,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:53+00:00"
+    },
+    {
+      "name": "claim_verification_dataset",
+      "path": "data/ml/verification/claim_verification.jsonl",
+      "checksum": "0adf218fd6f70ff39b406b88d9a2ab38ad5c0b22c569b6db6aeba8ebced03600",
+      "records": 7535,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:54+00:00",
+      "synthetic_rows": 2
+    },
+    {
+      "name": "reranker_dataset",
+      "path": "data/ml/reranker/query_document_pairs.jsonl",
+      "checksum": "6082394fa1949b498fe9fa4a767dec63f60771584b0ebcb0db1832869f6e8c87",
+      "records": 7533,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:54+00:00",
+      "synthetic_rows": 0
+    },
+    {
+      "name": "temporal_dataset",
+      "path": "data/ml/verification/temporal_cases.jsonl",
+      "checksum": "1ffc4b2c71b15b6ca319d49578a2fbaa46721fad87985e39b7b9c82a1aed4a83",
+      "records": 6236,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:55+00:00",
+      "synthetic_rows": 0
+    },
+    {
+      "name": "contradiction_dataset",
+      "path": "data/ml/verification/contradiction_cases.jsonl",
+      "checksum": "e39887fb201588e852f2f0733318e6aa5bd1909ef3f49fc224b7a0a88895b830",
+      "records": 1,
+      "status": "processed",
+      "created_at": "2026-10-03T01:10:55+00:00",
+      "synthetic_rows": 1
+    },
+    {
+      "name": "bootstrap_report",
+      "path": "data/processed/bootstrap_report.json",
+      "checksum": "1099514fc8a654090a135ab53452f98abcde39d5f96dd34a521b3101b0e8f599",
+      "records": 19,
+      "status": "processed",
+      "created_at": "2026-10-03T01:11:00+00:00"
+    },
+    {
+      "name": "data_validation",
+      "path": "data/processed/data_validation.json",
+      "checksum": "471fa0663fa334f071531e1c15990d85975cc0036d759711cd69e575bd9e391c",
+      "records": 14,
+      "status": "processed",
+      "created_at": "2026-10-03T01:14:08+00:00"
+    }
+  ],
+  "errors": [
+    {
+      "source": "NVD",
+      "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+      "error": "download failed after 3 attempt(s): https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=100&startIndex=0&pubStartDate=2026-09-25T22%3A28%3A45Z: HTTP Error 404: Not Found",
+      "timestamp": "2026-10-02T22:28:46+00:00"
+    },
+    {
+      "source": "CAPEC",
+      "url": "https://capec.mitre.org/data/xml/capec_latest.xml.zip",
+      "error": "download failed after 3 attempt(s): https://capec.mitre.org/data/xml/capec_latest.xml.zip: HTTP Error 404: Not Found",
+      "timestamp": "2026-10-02T22:31:51+00:00"
+    }
+  ],
+  "note": "This manifest is populated only by successful or attempted bootstrap scripts. No external dataset is claimed as downloaded until a real fetch records it here."
+}

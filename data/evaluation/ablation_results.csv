@@ -1,0 +1,11 @@
+configuration,name,status,mean_recall_at_10,mean_cers,abstention_rate,reason
+A,LLM only,not_run,,,,LLM_PROVIDER and LLM_API_KEY are not configured
+B,Basic RAG,measured,1.0,,0.3333333333333333,
+C,Hybrid RAG,measured,1.0,,0.3333333333333333,
+D,Hybrid RAG + reranker,not_run,,,,"Cross-encoder unavailable: {'provider': 'none', 'status': 'not_configured', 'model': 'cross-encoder/ms-marco-MiniLM-L-6-v2'}"
+E,Hybrid + source priority,measured,1.0,,0.3333333333333333,
+F,Hybrid + temporal ranking,measured,1.0,,0.3333333333333333,
+G,Hybrid + knowledge graph,measured,1.0,,0.3333333333333333,
+H,Hybrid + citation verification,measured,1.0,,0.3333333333333333,
+I,Hybrid + contradiction detection,measured,1.0,,0.3333333333333333,
+J,Complete configured CyberSecRA-X,measured,1.0,0.4699,0.3333333333333333,

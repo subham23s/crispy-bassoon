@@ -1,0 +1,11 @@
+# Optional model-backed verification/reranking/vision environment.
+# These packages are intentionally separate from the CPU API requirements.
+torch>=2.6.0
+transformers>=4.50.0
+datasets>=3.2.0
+accelerate>=1.2.0
+sentencepiece>=0.2.0
+Pillow>=11.0.0
+pytesseract>=0.3.13
+python-docx>=1.1.2
+reportlab>=4.2.5

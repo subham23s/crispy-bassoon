@@ -1,0 +1,74 @@
+[
+  {
+    "check": "Backend regression suite",
+    "command": "/tmp/cybersecra-venv/bin/python -m pytest -p no:cacheprovider -q backend/tests",
+    "started_at": "2026-10-03T09:37:27.549378+00:00",
+    "finished_at": "2026-10-03T09:38:54.961640+00:00",
+    "exit_code": 0,
+    "status": "PASSED",
+    "output": "..........s..........................                                    [100%]\n=============================== warnings summary ===============================\n../../../../../tmp/cybersecra-venv/lib/python3.14/site-packages/starlette/testclient.py:45\n  /tmp/cybersecra-venv/lib/python3.14/site-packages/starlette/testclient.py:45: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n36 passed, 1 skipped, 1 warning in 78.43s (0:01:18)\n"
+  },
+  {
+    "check": "Python compilation",
+    "command": "/tmp/cybersecra-venv/bin/python -m compileall -q backend scripts ml",
+    "started_at": "2026-10-03T09:38:54.962924+00:00",
+    "finished_at": "2026-10-03T09:39:01.579409+00:00",
+    "exit_code": 0,
+    "status": "PASSED",
+    "output": ""
+  },
+  {
+    "check": "Web client tests",
+    "command": "npm test --prefix frontend",
+    "started_at": "2026-10-03T09:39:01.579816+00:00",
+    "finished_at": "2026-10-03T09:39:04.287232+00:00",
+    "exit_code": 0,
+    "status": "PASSED",
+    "output": "\n> cybersecra-x-web@0.2.0 test\n> node --test tests/*.test.mjs\n\n\u2714 auth stores tokens in memory, sends Bearer, refreshes once, and logs out authenticated (22.461502ms)\n\u2714 register posts only email and password and keeps returned tokens in memory (2.4443ms)\n\u2714 a second 401 clears the session and reports an API error without looping refresh (4.6779ms)\n\u2714 public health requests do not attach a bearer token (2.2851ms)\n\u2714 static server serves only the public asset allow-list (308.747428ms)\n\u2139 tests 5\n\u2139 suites 0\n\u2139 pass 5\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1209.406512\n"
+  },
+  {
+    "check": "TypeScript typecheck",
+    "command": "npm run typecheck --prefix frontend",
+    "started_at": "2026-10-03T09:39:04.287356+00:00",
+    "finished_at": "2026-10-03T09:39:11.547728+00:00",
+    "exit_code": 0,
+    "status": "PASSED",
+    "output": "\n> cybersecra-x-web@0.2.0 typecheck\n> node node_modules/typescript/bin/tsc --noEmit\n\n"
+  },
+  {
+    "check": "Next.js production build",
+    "command": "npm run build --prefix frontend",
+    "started_at": "2026-10-03T09:39:11.548069+00:00",
+    "finished_at": "2026-10-03T09:40:36.992241+00:00",
+    "exit_code": 1,
+    "status": "FAILED / BLOCKED",
+    "output": "\n> cybersecra-x-web@0.2.0 build\n> node node_modules/next/dist/bin/next build\n\n   \u25b2 Next.js 15.5.9\n\n   Creating an optimized production build ...\n \u2713 Compiled successfully in 37.6s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/21) ...\n   Generating static pages (5/21) \n   Generating static pages (10/21) \n   Generating static pages (15/21) \n \u2713 Generating static pages (21/21)\n\n> Build error occurred\n[Error: EPERM: operation not permitted, copyfile '/mnt/c/Users/Lenovo/MLPA/frontend/.next/server/app/_not-found.html' -> '/mnt/c/Users/Lenovo/MLPA/frontend/.next/server/pages/404.html'] {\n  errno: -1,\n  code: 'EPERM',\n  syscall: 'copyfile',\n  path: '/mnt/c/Users/Lenovo/MLPA/frontend/.next/server/app/_not-found.html',\n  dest: '/mnt/c/Users/Lenovo/MLPA/frontend/.next/server/pages/404.html'\n}\n"
+  },
+  {
+    "check": "Docker configuration checker",
+    "command": "/tmp/cybersecra-venv/bin/python scripts/check_docker_config.py",
+    "started_at": "2026-10-03T09:40:36.992610+00:00",
+    "finished_at": "2026-10-03T09:40:37.925529+00:00",
+    "exit_code": 0,
+    "status": "PASSED",
+    "output": "{\n  \"docker_available\": false,\n  \"compose_file\": true,\n  \"yaml_parse\": \"ok\",\n  \"checks\": {\n    \"backend_and_frontend\": true,\n    \"infra_services\": true,\n    \"persistent_volumes\": true,\n    \"postgres_healthcheck\": true,\n    \"redis_healthcheck\": true,\n    \"neo4j_healthcheck\": true\n  },\n  \"warnings\": []\n}\n"
+  },
+  {
+    "check": "Mobile environment checker",
+    "command": "/tmp/cybersecra-venv/bin/python scripts/check_mobile.py --json",
+    "started_at": "2026-10-03T09:40:37.925693+00:00",
+    "finished_at": "2026-10-03T09:40:38.629690+00:00",
+    "exit_code": 2,
+    "status": "FAILED / BLOCKED",
+    "output": "{\n  \"android_platform_present\": false,\n  \"blocked_commands\": [\n    {\n      \"command\": \"cd mobile && flutter pub get\",\n      \"reason\": \"Flutter SDK is not available on PATH.\"\n    },\n    {\n      \"command\": \"cd mobile && flutter analyze\",\n      \"reason\": \"Flutter SDK is not available on PATH.\"\n    },\n    {\n      \"command\": \"cd mobile && flutter test\",\n      \"reason\": \"Flutter SDK is not available on PATH.\"\n    },\n    {\n      \"command\": \"cd mobile && flutter build apk --debug\",\n      \"reason\": \"Flutter SDK is not available on PATH.\"\n    },\n    {\n      \"command\": \"cd mobile && flutter build ios --no-codesign\",\n      \"reason\": \"Flutter SDK is not available on PATH.\"\n    },\n    {\n      \"command\": \"cd mobile && flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000\",\n      \"reason\": \"Flutter SDK is not available on PATH.\"\n    },\n    {\n      \"command\": \"cd mobile && tool/generate_platforms.sh\",\n      \"reason\": \"Flutter SDK is required to run the platform generator.\"\n    },\n    {\n      \"command\": \"flutter create --no-pub --platforms=android,ios --project-name=cybersecra_x_mobile <temporary-directory>\",\n      \"reason\": \"Flutter SDK is not available to create platform folders.\"\n    },\n    {\n      \"command\": \"cd mobile && dart analyze\",\n      \"reason\": \"Dart SDK is not available on PATH.\"\n    }\n  ],\n  \"dart_available\": false,\n  \"flutter_available\": false,\n  \"ios_platform_present\": false,\n  \"project\": \"mobile\"\n}\n"
+  },
+  {
+    "check": "Environment availability",
+    "command": "/tmp/cybersecra-venv/bin/python scripts/check_environment.py",
+    "started_at": "2026-10-03T09:40:38.629881+00:00",
+    "finished_at": "2026-10-03T09:40:41.249278+00:00",
+    "exit_code": 0,
+    "status": "PASSED",
+    "output": "{\n  \"root\": \"/mnt/c/Users/Lenovo/MLPA\",\n  \"python\": \"3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]\",\n  \"commands\": {\n    \"python\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true,\n      \"path\": \"/usr/bin/python3\",\n      \"version\": \"Python 3.14.4\"\n    },\n    \"node\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true,\n      \"path\": \"/home/ashmita/.nvm/versions/node/v24.21.0/bin/node\",\n      \"version\": \"v24.21.0\"\n    },\n    \"npm\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true,\n      \"path\": \"/home/ashmita/.nvm/versions/node/v24.21.0/bin/npm\",\n      \"version\": \"11.19.0\"\n    },\n    \"docker\": {\n      \"status\": \"OPTIONAL\",\n      \"available\": false,\n      \"path\": null\n    },\n    \"docker_compose\": {\n      \"status\": \"OPTIONAL\",\n      \"available\": false,\n      \"path\": null\n    },\n    \"flutter\": {\n      \"status\": \"OPTIONAL\",\n      \"available\": false,\n      \"path\": null\n    },\n    \"dart\": {\n      \"status\": \"OPTIONAL\",\n      \"available\": false,\n      \"path\": null\n    },\n    \"tesseract\": {\n      \"status\": \"OPTIONAL\",\n      \"available\": false,\n      \"path\": null\n    },\n    \"libreoffice\": {\n      \"status\": \"OPTIONAL\",\n      \"available\": false,\n      \"path\": null\n    },\n    \"pandoc\": {\n      \"status\": \"OPTIONAL\",\n      \"available\": false,\n      \"path\": null\n    }\n  },\n  \"python_modules\": {\n    \"fastapi\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"uvicorn\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"fitz\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"yaml\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"transformers\": {\n      \"status\": \"OPTIONAL\",\n      \"available\": false\n    },\n    \"torch\": {\n      \"status\": \"OPTIONAL\",\n      \"available\": false\n    },\n    \"PIL\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"pytesseract\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"docx\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"reportlab\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"sklearn\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"redis\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"neo4j\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"psycopg\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    },\n    \"sqlalchemy\": {\n      \"status\": \"AVAILABLE\",\n      \"available\": true\n    }\n  },\n  \"services\": {\n    \"postgresql\": {\n      \"status\": \"OPTIONAL\",\n      \"host\": \"localhost\",\n      \"port\": 5432,\n      \"available\": false,\n      \"reason\": \"[Errno 111] Connection refused\"\n    },\n    \"redis\": {\n      \"status\": \"OPTIONAL\",\n      \"host\": \"localhost\",\n      \"port\": 6379,\n      \"available\": false,\n      \"reason\": \"[Errno 111] Connection refused\"\n    },\n    \"neo4j\": {\n      \"status\": \"OPTIONAL\",\n      \"host\": \"localhost\",\n      \"port\": 7687,\n      \"available\": false,\n      \"reason\": \"[Errno 111] Connection refused\"\n    }\n  },\n  \"gpu_cuda\": {\n    \"cuda\": false,\n    \"gpu\": null,\n    \"status\": \"OPTIONAL\",\n    \"reason\": \"PyTorch is not installed\"\n  },\n  \"files\": {\n    \"docker_compose\": true,\n    \"env_example\": true,\n    \"mobile_pubspec\": true,\n    \"data_manifest\": true\n  },\n  \"verification_guidance\": {\n    \"backend\": \"PYTHONPATH=backend python -m pytest -q backend/tests\",\n    \"data\": \"PYTHONPATH=backend python scripts/bootstrap_data.py --minimal --papers\",\n    \"docker\": \"docker compose config && docker compose --profile infra up --build\",\n    \"flutter\": \"cd mobile && flutter pub get && flutter analyze && flutter test\",\n    \"nli\": \"pip install -r backend/requirements-ml.txt && PYTHONPATH=backend python scripts/setup_models.py --nli\",\n    \"transformer_training\": \"PYTHONPATH=. python scripts/train_transformer.py --task intent\"\n  }\n}\n"
+  }
+]

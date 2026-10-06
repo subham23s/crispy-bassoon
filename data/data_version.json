@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "processing_version": "cybersecra-x-bootstrap-0.1",
+  "generated_at": "2026-10-03T01:11:00+00:00",
+  "hardware_profile": {
+    "cpu_count": 8,
+    "ram_bytes": 4060471296,
+    "gpu": null,
+    "storage_available_bytes": 161772941312,
+    "python": "3.14.4",
+    "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "recommended_profile": "low-resource-cpu"
+  },
+  "source_manifest": "data/data_manifest.json",
+  "sources": [
+    {
+      "source": "MITRE ATT&CK",
+      "version": "bundle--6198013c-6f02-42a4-9713-38ea1301a1aa",
+      "checksum": "dc1639caa5501d720e280cf1cbd8fbe009884a0c9b3e6e9ed9d0c25166c3d8f4",
+      "status": "processed"
+    },
+    {
+      "source": "CISA KEV",
+      "version": "2026.10.02",
+      "checksum": "d2c8c6cb23291b46ff2b086197641a6b1fa35e6b746bba714cc280a1778f9e48",
+      "status": "processed"
+    },
+    {
+      "source": "NVD",
+      "version": "API v2.0",
+      "checksum": "4ad4a9c5387936c9ae14305f92359ebac426ccf53313d4b7df64bdc21184486f",
+      "status": "processed"
+    },
+    {
+      "source": "NIST",
+      "version": "configured-pages",
+      "checksum": "",
+      "status": "processed"
+    },
+    {
+      "source": "OWASP",
+      "version": "configured-pages",
+      "checksum": "",
+      "status": "processed"
+    },
+    {
+      "source": "MITRE ATLAS",
+      "version": "v6-latest",
+      "checksum": "935efa93e28294432d3e2f537eb94991ef8d1f8c58341cd360ea3321ddb66688",
+      "status": "processed"
+    },
+    {
+      "source": "CWE",
+      "version": "latest",
+      "checksum": "3976f599e5e5200219a3108bb896d06e2a88fbb293369e1883cb423a5e9d7d50",
+      "status": "processed"
+    },
+    {
+      "source": "CAPEC",
+      "version": "latest",
+      "checksum": "c56527f3d64b7164fcdae73c1a7545ee6e83b1150546c07a93339b1543a3041d",
+      "status": "processed"
+    },
+    {
+      "source": "OpenAlex",
+      "version": "API",
+      "checksum": "2c9347f029e4b5eda651010532f2b3066dbc507882ede7530ad44bb176846e73",
+      "status": "processed"
+    }
+  ],
+  "embedding_model": "tfidf-lite",
+  "notes": [
+    "External sources are only represented as downloaded when a real fetch succeeded.",
+    "Synthetic ML rows are marked synthetic=true and are not authoritative cybersecurity intelligence.",
+    "Transformer embeddings, pgvector, Redis, and Neo4j are not silently installed or claimed; the local embedding/index artifacts are explicit baselines."
+  ]
+}

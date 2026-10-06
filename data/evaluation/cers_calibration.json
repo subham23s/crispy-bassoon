@@ -1,0 +1,16 @@
+{
+  "status": "CALIBRATION_PENDING",
+  "human_labeled_examples": 0,
+  "label_distribution": {},
+  "errors": [],
+  "metrics": {},
+  "note": "CERS remains project-defined and is not a scientifically validated probability. No metric is computed without complete human labels and CERS scores.",
+  "weights": {
+    "source_authority": 0.22,
+    "relevance": 0.18,
+    "entailment": 0.25,
+    "agreement": 0.15,
+    "recency": 0.1,
+    "retrieval_confidence": 0.1
+  }
+}
