@@ -55,11 +55,14 @@ INTENT_KEYWORDS: dict[str, tuple[str, ...]] = {
     "network_security": ("network", "firewall", "ids", "ips", "dns", "packet", "segmentation"),
     "web_security": ("web", "xss", "csrf", "ssrf", "sql injection", "owasp", "web application"),
     "cloud_security": ("cloud", "kubernetes", "container", "iam", "s3", "azure", "aws", "gcp"),
+    "email_security": ("phishing", "spear phishing", "email security", "business email compromise", "smishing", "vishing", "malicious link", "email spoofing"),
+    "social_engineering": ("social engineering", "credential harvesting", "credential theft", "pretexting", "tailgating"),
     "cryptography": ("cryptography", "encryption", "cipher", "hash", "tls", "rsa", "key exchange"),
     "digital_forensics": ("forensics", "disk image", "memory dump", "artifact", "timeline analysis"),
     "incident_response": ("incident", "breach", "containment", "eradication", "playbook", "alert"),
     "ai_security": ("prompt injection", "llm", "machine learning security", "model poisoning", "adversarial"),
     "threat_hunting": ("threat hunting", "hunt", "suspicious", "anomaly", "detection rule", "sigma"),
+    "security_tools": ("nmap", "wireshark", "snort", "packet capture", "network scanner", "security tool"),
     "research_literature": ("paper", "research", "literature", "dataset", "methodology", "research gap", "study"),
     "compliance": ("compliance", "nist", "iso 27001", "control", "audit", "gdpr", "policy"),
     "general_cybersecurity": ("cybersecurity", "security", "attack", "defense", "mitigation", "authentication", "access control"),
@@ -69,6 +72,7 @@ DOMAIN_ALIASES = {
     "vulnerability": "vulnerability management",
     "threat_intelligence": "threat intelligence",
     "research_literature": "cybersecurity research",
+    "security_tools": "cybersecurity tools",
     "ai_security": "AI security",
     "general_cybersecurity": "cybersecurity",
 }
@@ -121,6 +125,10 @@ def understand_query(query: str) -> QueryUnderstanding:
             if phrase in lowered:
                 scores[intent_name] += 1 if " " in phrase else 2
     keyword_intent = scores.most_common(1)[0][0] if scores else "out_of_domain"
+    # An explicit product/tool name should anchor tool questions even when a
+    # nearby generic word (for example, "network") matches another intent.
+    if re.search(r"\b(?:nmap|wireshark|snort)\b", lowered):
+        keyword_intent = "security_tools"
     predicted_intent, intent_engine = _model_prediction(text, "intent")
     auto_intent = os.getenv("INTENT_PROVIDER", "auto").lower() == "auto"
     if predicted_intent in INTENT_KEYWORDS and (not auto_intent or keyword_intent == "out_of_domain"):
@@ -163,11 +171,10 @@ def understand_query(query: str) -> QueryUnderstanding:
         query_type = "research"
 
     terms = [word for word in re.findall(r"[a-z0-9-]+", lowered) if len(word) > 2]
+    # Keep the user's original terms as the retrieval anchor. Generic additions
+    # such as "cybersecurity evidence" made unrelated trusted documents score as
+    # matches for narrow questions (for example, ransomware-specific questions).
     expansions = [text]
-    if intent != "out_of_domain":
-        expansions.extend([f"{text} cybersecurity evidence", f"{text} authoritative guidance"])
-        if intent == "vulnerability" and "cve" not in lowered:
-            expansions.append(f"{text} CVE CVSS affected versions remediation")
     subqueries = [text]
     for splitter in (" and ", ";", " then "):
         if splitter in lowered:

@@ -1,2 +1,2 @@
 import { QueryPage } from '@/components/query-page';
-export default function AskPage(){return <QueryPage eyebrow="RESEARCH CONSOLE" title="Ask CyberSecRA-X" description="Every response exposes evidence, provenance, verification, and limitations from the backend." placeholder="What does NIST CSF 2.0 provide?"/>;}
+export default function AskPage(){return <QueryPage eyebrow="EVIDENCE FIRST CYBERSECURITY RESEARCH" title="Ask anything about cybersecurity" description="Get an answer grounded in retrieved sources, with claim checks, visible disagreements, and a clear note when the evidence is not strong enough." placeholder="Ask a cybersecurity research question…"/>;}

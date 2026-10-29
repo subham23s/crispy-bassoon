@@ -11,7 +11,10 @@ import urllib.request
 from dataclasses import dataclass
 from typing import Any, Protocol
 
-from app.config import settings
+try:
+    from app.config import settings
+except (ImportError, ModuleNotFoundError):
+    from ..config import settings
 
 
 class LLMProvider(Protocol):
@@ -36,10 +39,10 @@ class UnavailableProvider:
     name = "none"
 
     def generate(self, messages: list[dict[str, str]], *, temperature: float = 0.0) -> str:
-        raise RuntimeError("No LLM provider is configured; use the deterministic evidence pipeline or configure LLM_PROVIDER and LLM_API_KEY.")
+        raise RuntimeError("No LLM provider is configured; use the deterministic evidence pipeline, set LLM_PROVIDER=ollama for local Ollama, or configure LLM_PROVIDER and LLM_API_KEY.")
 
     def stream(self, messages: list[dict[str, str]], *, temperature: float = 0.0):
-        raise RuntimeError("No LLM provider is configured; streaming requires LLM_PROVIDER and LLM_API_KEY.")
+        raise RuntimeError("No LLM provider is configured; streaming requires LLM_PROVIDER=ollama or a valid LLM_API_KEY.")
 
     def structured_generate(self, messages: list[dict[str, str]], schema: dict[str, Any]) -> dict[str, Any]:
         raise RuntimeError("No LLM provider is configured")
@@ -90,12 +93,18 @@ class OpenAICompatibleProvider:
 
 
 def get_provider() -> LLMProvider:
-    if settings.llm_provider.lower() in {"openai", "openai-compatible", "ollama"} and settings.llm_api_key:
-        base_url = settings.llm_base_url or ("http://localhost:11434/v1" if settings.llm_provider.lower() == "ollama" else "https://api.openai.com/v1")
+    provider_name = settings.llm_provider.lower()
+    if provider_name == "ollama":
+        base_url = settings.llm_base_url or "http://localhost:11434/v1"
+        api_key = settings.llm_api_key or "ollama"
+        return OpenAICompatibleProvider(base_url, api_key, settings.llm_model or "llama3")
+    if provider_name in {"openai", "openai-compatible"} and settings.llm_api_key:
+        base_url = settings.llm_base_url or "https://api.openai.com/v1"
         return OpenAICompatibleProvider(base_url, settings.llm_api_key, settings.llm_model or "configured-model")
     return UnavailableProvider()
 
 
 def provider_status() -> ProviderStatus:
-    configured = settings.llm_provider.lower() not in {"", "none"} and bool(settings.llm_api_key)
+    provider_name = settings.llm_provider.lower()
+    configured = (provider_name == "ollama") or (provider_name not in {"", "none"} and bool(settings.llm_api_key))
     return ProviderStatus(configured, settings.llm_provider, settings.llm_model, "configured" if configured else "explicit deterministic fallback")

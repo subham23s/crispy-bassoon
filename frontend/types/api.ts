@@ -21,7 +21,14 @@ export interface QueryResult extends JsonRecord {
   query?: string;
   answer?: string;
   abstained?: boolean;
-  cers?: { percentage?: number; [key: string]: unknown };
+  cers?: {
+    percentage?: number;
+    score?: number;
+    components?: Record<string, number>;
+    calibration_status?: string;
+    methodology?: string;
+    [key: string]: unknown;
+  };
   evidence?: Array<JsonRecord>;
   claims?: Array<JsonRecord>;
   conflicts?: unknown[];
@@ -43,6 +50,13 @@ export interface Health extends JsonRecord {
   runtime?: string;
   evidence_mode?: string;
   capabilities?: JsonRecord;
+}
+
+export interface SourceCoverageResponse extends JsonRecord {
+  sources?: Array<JsonRecord>;
+  refresh_status?: string;
+  refresh_finished_at?: string | null;
+  refresh_failures?: Array<JsonRecord | string>;
 }
 
 export interface DocumentsResponse {

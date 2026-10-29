@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -79,7 +80,7 @@ def _load_state(path: Path) -> dict[str, Any]:
     return {}
 
 
-def ingest(*, cve_id: str | None = None, start_date: str | None = None, end_date: str | None = None, update: bool = False, limit: int = 100, max_pages: int = 1, api_key: str = "") -> dict[str, Any]:
+def ingest(*, cve_id: str | None = None, start_date: str | None = None, end_date: str | None = None, update: bool = False, limit: int = 2000, max_pages: int = 5, api_key: str = "") -> dict[str, Any]:
     ensure_data_dirs()
     raw_dir = DATA_DIR / "raw/nvd"
     normalized = DATA_DIR / "normalized/nvd.jsonl"
@@ -101,11 +102,16 @@ def ingest(*, cve_id: str | None = None, start_date: str | None = None, end_date
     records_by_id = {row.get("id"): row for row in read_jsonl(normalized) if row.get("id")}
     downloaded = 0
     page_size = min(max(1, limit), 2000)
+    page_budget = min(max(1, max_pages), 20)
+    configured_delay = os.getenv("NVD_REQUEST_DELAY_SECONDS", "").strip()
+    request_delay = max(0.0, float(configured_delay or ("0.6" if api_key else "6")))
     start_index = int(pending["next_start_index"]) if pending else 0
     complete = False
     raw_paths = []
     try:
-        for page in range(max(1, max_pages)):
+        for page in range(page_budget):
+            if page and request_delay:
+                time.sleep(request_delay)
             params: dict[str, str | int] = {"resultsPerPage": page_size, "startIndex": start_index}
             if cve_id:
                 params["cveId"] = cve_id
@@ -115,7 +121,7 @@ def ingest(*, cve_id: str | None = None, start_date: str | None = None, end_date
                 if end_date:
                     params["lastModEndDate" if update else "pubEndDate"] = end_date
             url = f"{BASE_URL}?{urlencode(params)}"
-            raw = fetch_bytes(url, headers=headers, timeout=45, retries=3, min_delay=1.0)
+            raw = fetch_bytes(url, headers=headers, timeout=45, retries=3, min_delay=max(1.0, request_delay))
             downloaded += 1
             payload = json.loads(raw)
             raw_path = raw_dir / f"response-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-{page}.json"
@@ -160,8 +166,8 @@ def main() -> None:
     parser.add_argument("--start-date")
     parser.add_argument("--end-date")
     parser.add_argument("--update", action="store_true")
-    parser.add_argument("--limit", type=int, default=100)
-    parser.add_argument("--max-pages", type=int, default=1)
+    parser.add_argument("--limit", type=int, default=int(os.getenv("NVD_RESULTS_PER_PAGE", "2000")), help="Results requested per NVD API page (maximum 2000).")
+    parser.add_argument("--max-pages", type=int, default=int(os.getenv("NVD_MAX_PAGES", "5")), help="Maximum pages to fetch in one run; larger values take longer and must respect NVD rate limits.")
     parser.add_argument("--api-key", default=os.getenv("NVD_API_KEY", ""))
     args = parser.parse_args()
     print(json.dumps(ingest(cve_id=args.cve, start_date=args.start_date, end_date=args.end_date, update=args.update, limit=args.limit, max_pages=args.max_pages, api_key=args.api_key), indent=2))

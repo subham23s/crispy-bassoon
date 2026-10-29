@@ -51,7 +51,7 @@ def checksum_file(path: Path) -> str:
 
 def ensure_data_dirs() -> None:
     for relative in (
-        "raw/mitre", "raw/atlas", "raw/nvd", "raw/cisa", "raw/cwe", "raw/capec", "raw/nist", "raw/owasp", "raw/papers",
+        "raw/mitre", "raw/atlas", "raw/nvd", "raw/cisa", "raw/cisa_advisories", "raw/cwe", "raw/capec", "raw/nist", "raw/owasp", "raw/tools", "raw/papers",
         "processed", "normalized", "chunks", "embeddings", "graph", "ml/intent", "ml/ood", "ml/reranker", "ml/verification", "evaluation", "demo",
     ):
         (DATA_DIR / relative).mkdir(parents=True, exist_ok=True)

@@ -5,6 +5,7 @@ import type {
   Health,
   JsonRecord,
   QueryResult,
+  SourceCoverageResponse,
   User,
   ExperimentInput,
   ExperimentRecord,
@@ -126,7 +127,7 @@ export class ApiClient {
     return this.request<AuthResponse>('/auth/register', { method: 'POST', auth: false, body: { email, password } }).then((result) => { this.setSession(result); return result; });
   }
 
-  me(): Promise<{ user: User }> { return this.request('/auth/me'); }
+  me(signal?: AbortSignal): Promise<{ user: User }> { return this.request('/auth/me', { signal }); }
   health(): Promise<Health> { return this.request('/health', { auth: false }); }
   healthDetailed(): Promise<Health> { return this.request('/health/detailed', { auth: false }); }
   query(query: string, mode = 'RESEARCHER', workspace_id?: string): Promise<QueryResult> { return this.request('/chat/query', { method: 'POST', body: { query, mode, ...(workspace_id ? { workspace_id } : {}) } }); }
@@ -178,15 +179,16 @@ export class ApiClient {
   saveEvidence(id: string, evidence_id: string, note = ''): Promise<JsonRecord> { return this.request(`/research/workspaces/${encodeURIComponent(id)}/evidence`, { method: 'POST', body: { evidence_id, note } }); }
   adminOverview(): Promise<JsonRecord> { return this.request('/admin/overview'); }
   refreshStatus(): Promise<JsonRecord> { return this.request('/data/refresh/status'); }
+  sourceCoverage(): Promise<SourceCoverageResponse> { return this.request('/data/sources'); }
   refreshSources(): Promise<{ sources: string[] }> { return this.request('/data/refresh/sources'); }
   startRefresh(sources: string[], force = false): Promise<{ job: JsonRecord }> { return this.request('/data/refresh', { method: 'POST', body: { sources, force } }); }
   refreshJob(id: string): Promise<{ job: JsonRecord }> { return this.request(`/data/refresh/jobs/${encodeURIComponent(id)}`); }
-  async streamQuery(query: string, mode = 'RESEARCHER', onEvent: (event: string, data: JsonRecord) => void, retried = false, workspace_id?: string, signal?: AbortSignal): Promise<void> {
-    const response = await fetch(`${this.baseUrl}/chat/stream`, { method: 'POST', signal, headers: { accept: 'text/event-stream', 'content-type': 'application/json', ...(this.accessToken ? { authorization: `Bearer ${this.accessToken}` } : {}) }, body: JSON.stringify({ query, mode, ...(workspace_id ? { workspace_id } : {}) }) });
+  async streamQuery(query: string, mode = 'RESEARCHER', onEvent: (event: string, data: JsonRecord) => void, retried = false, workspace_id?: string, signal?: AbortSignal, answerStyle = 'balanced'): Promise<void> {
+    const response = await fetch(`${this.baseUrl}/chat/stream`, { method: 'POST', signal, headers: { accept: 'text/event-stream', 'content-type': 'application/json', ...(this.accessToken ? { authorization: `Bearer ${this.accessToken}` } : {}) }, body: JSON.stringify({ query, mode, answer_style: answerStyle, ...(workspace_id ? { workspace_id } : {}) }) });
     if (response.status === 401 && !retried && this.refreshToken) {
       await response.body?.cancel();
       try { await this.refresh(); } catch (error) { this.notifyExpired(); throw error; }
-      return this.streamQuery(query, mode, onEvent, true, workspace_id, signal);
+      return this.streamQuery(query, mode, onEvent, true, workspace_id, signal, answerStyle);
     }
     if (response.status === 401) this.notifyExpired();
     if (!response.ok || !response.body) throw new ApiError(getMessage(await parseBody(response), response.status), response.status);

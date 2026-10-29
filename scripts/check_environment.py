@@ -92,16 +92,13 @@ def main() -> None:
         "services": services,
         "gpu_cuda": gpu_info(),
         "files": {
-            "docker_compose": (ROOT / "docker-compose.yml").is_file(),
             "env_example": (ROOT / ".env.example").is_file(),
-            "mobile_pubspec": (ROOT / "mobile/pubspec.yaml").is_file(),
             "data_manifest": (ROOT / "data/data_manifest.json").is_file(),
         },
         "verification_guidance": {
             "backend": "PYTHONPATH=backend python -m pytest -q backend/tests",
             "data": "PYTHONPATH=backend python scripts/bootstrap_data.py --minimal --papers",
-            "docker": "docker compose config && docker compose --profile infra up --build",
-            "flutter": "cd mobile && flutter pub get && flutter analyze && flutter test",
+            "frontend": "npm test --prefix frontend",
             "nli": "pip install -r backend/requirements-ml.txt && PYTHONPATH=backend python scripts/setup_models.py --nli",
             "transformer_training": "PYTHONPATH=. python scripts/train_transformer.py --task intent",
         },

@@ -161,12 +161,19 @@ class DocumentStore:
                 raw_id = str(row.get("id") or row.get("source_id") or "")
                 if not raw_id:
                     continue
+                aliases = row.get("aliases") if isinstance(row.get("aliases"), list) else []
+                identifiers = list(dict.fromkeys(
+                    str(value).strip()
+                    for value in [row.get("source_id"), *aliases]
+                    if value is not None and str(value).strip()
+                ))
+                identifier_text = " ".join(f"[{value}]" for value in identifiers)
                 metadata_lines = []
                 if entity_type == "CVE" or source == "CISA KEV":
                     for key in ("cvss", "products", "weaknesses", "vendorProject", "product", "dateAdded", "dueDate", "requiredAction", "knownRansomwareCampaignUse", "notes", "vulnStatus"):
                         if key in metadata and metadata[key] not in (None, "", [], {}):
                             metadata_lines.append(f"{key}: {json.dumps(metadata[key], ensure_ascii=False)}")
-                content = "\n".join(part for part in (f"{row.get('name', '')} [{raw_id}]", str(row.get('description', '')), *metadata_lines) if part).strip()
+                content = "\n".join(part for part in (f"{row.get('name', '')} [{raw_id}] {identifier_text}", str(row.get('description', '')), *metadata_lines) if part).strip()
                 authority = {"CISA": 0.98, "NVD": 0.96, "MITRE ATT&CK": 0.97, "MITRE ATLAS": 0.96, "CWE": 0.94, "CAPEC": 0.94, "NIST": 0.96, "OWASP": 0.92}.get(source, 0.75)
                 document = Document(
                     document_id=f"kb-{hashlib.sha256(f'{source}:{raw_id}'.encode()).hexdigest()[:24]}",

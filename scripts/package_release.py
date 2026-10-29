@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED_DIRS = {".git", ".runtime", "release", "__agent__", ".agent", ".opencode", "node_modules", ".next", ".dart_tool", "__pycache__", ".pytest_cache", ".venv", "venv", "build", ".gradle", "Pods", "DerivedData", "ephemeral", "coverage", ".idea", ".vscode"}
 GENERATED_DATA = {"raw", "processed", "normalized", "chunks", "embeddings", "graph", "ml", "ingestion_jobs"}
 EXCLUDED_FILES = (".env", ".env.*", "*.db", "*.db-*", "*.sqlite", "*.sqlite-*", "*.pyc", "*.pyo", "*.tsbuildinfo", "*.log", "*.pem", "*.key", "*.p12", "*.jks", "*.keystore", "local.properties", ".jwt_secret", ".flutter-plugins*", "Generated.xcconfig", "flutter_export_environment.sh", "GeneratedPluginRegistrant.*", "RELEASE_MANIFEST.json", ".DS_Store", "Thumbs.db")
-REQUIRED = ("README.md", "LICENSE", ".env.example", "Makefile", "backend/app/main.py", "backend/requirements.txt", "backend/Dockerfile", "frontend/package.json", "frontend/package-lock.json", "frontend/app/layout.tsx", "frontend/Dockerfile", "ml/models/inference.py", "mobile/pubspec.yaml", "mobile/lib/main.dart", "mobile/android/app/src/main/AndroidManifest.xml", "mobile/ios/Runner/Info.plist", "docker-compose.yml", "scripts/product.py", "scripts/package_release.py", "docs/PRODUCT_RELEASE.md", "data/source_config.json", "data/evaluation/cybertrust_qa.json")
+REQUIRED = ("README.md", "LICENSE", ".env.example", "Makefile", "backend/app/main.py", "backend/requirements.txt", "frontend/package.json", "frontend/package-lock.json", "frontend/app/layout.tsx", "ml/models/inference.py", "scripts/product.py", "scripts/package_release.py", "docs/PRODUCT_RELEASE.md", "data/source_config.json", "data/evaluation/cybertrust_qa.json")
 
 
 def included(path: Path) -> bool:

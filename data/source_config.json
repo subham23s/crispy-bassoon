@@ -1,10 +1,33 @@
 {
   "nist": [
     {"title": "NIST Cybersecurity Framework 2.0", "url": "https://www.nist.gov/cyberframework", "license": "Review NIST terms before redistribution"},
-    {"title": "NIST Vulnerability Database API documentation", "url": "https://nvd.nist.gov/developers/vulnerabilities", "license": "Review NVD API terms before redistribution"}
+    {"title": "NIST Vulnerability Database API documentation", "url": "https://nvd.nist.gov/developers/vulnerabilities", "license": "Review NVD API terms before redistribution"},
+    {"title": "NIST SP 800-61 Revision 3 Incident Response Guide", "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf", "format": "pdf", "version": "SP 800-61 Rev. 3 Final", "publication_date": "2025-04-03", "license": "NIST publication; retain attribution and check the publication reuse notice"},
+    {"title": "NIST Cybersecurity Framework 2.0 Full Text", "url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf", "format": "pdf", "version": "CSWP 29 Final", "publication_date": "2024-02-26", "license": "NIST publication; retain attribution and check the publication reuse notice"},
+    {"title": "NIST SP 800-53 Revision 5 Security and Privacy Controls", "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf", "format": "pdf", "version": "SP 800-53 Rev. 5", "publication_date": "2020-09-23", "license": "NIST publication; retain attribution and check the publication reuse notice"},
+    {"title": "NIST SP 800-53 Release 5.2.0 Change Summary", "url": "https://csrc.nist.gov/files/projects/Risk-Management/800-53%20Comment%20Site/SP800-53-r5.2.0-changes.pdf", "format": "pdf", "version": "SP 800-53 Release 5.2.0", "publication_date": "2025-08-27", "license": "NIST publication; retain attribution and check the publication reuse notice"}
   ],
   "owasp": [
     {"title": "OWASP Top 10 for Large Language Model Applications", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/", "license": "OWASP project terms; verify current license"},
     {"title": "OWASP API Security Top 10", "url": "https://owasp.org/API-Security/editions/2023/en/0x00-header/", "license": "OWASP project terms; verify current license"}
+  ],
+  "tools": [
+    {"title": "Nmap Reference Guide", "tool": "Nmap", "topic": "overview and command reference", "url": "https://nmap.org/book/man.html", "version": "online reference", "license": "Nmap project documentation; retain attribution and verify reuse terms"},
+    {"title": "Nmap Host Discovery", "tool": "Nmap", "topic": "host discovery", "url": "https://nmap.org/book/host-discovery.html", "version": "online reference", "license": "Nmap project documentation; retain attribution and verify reuse terms"},
+    {"title": "Nmap Port Scanning Techniques", "tool": "Nmap", "topic": "port scanning", "url": "https://nmap.org/book/man-port-scanning-techniques.html", "version": "online reference", "license": "Nmap project documentation; retain attribution and verify reuse terms"},
+    {"title": "Nmap Service and Version Detection", "tool": "Nmap", "topic": "service identification", "url": "https://nmap.org/book/vscan.html", "version": "online reference", "license": "Nmap project documentation; retain attribution and verify reuse terms"},
+    {"title": "Nmap Scripting Engine", "tool": "Nmap", "topic": "scripting engine", "url": "https://nmap.org/book/nse.html", "version": "online reference", "license": "Nmap project documentation; retain attribution and verify reuse terms"},
+    {"title": "Wireshark User's Guide", "tool": "Wireshark", "topic": "user guide and packet analysis", "url": "https://www.wireshark.org/docs/wsug_html_chunked/", "version": "online user guide", "license": "Wireshark documentation; retain attribution and verify current license terms"},
+    {"title": "Wireshark Live Packet Capture", "tool": "Wireshark", "topic": "packet capture", "url": "https://www.wireshark.org/docs/wsug_html_chunked/ChapterCapture.html", "version": "online user guide", "license": "Wireshark documentation; retain attribution and verify current license terms"},
+    {"title": "Wireshark Display Filter Expressions", "tool": "Wireshark", "topic": "display filters", "url": "https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html", "version": "online user guide", "license": "Wireshark documentation; retain attribution and verify current license terms"},
+    {"title": "Snort 3 Rule Writing Guide", "tool": "Snort", "topic": "IDS/IPS overview and rule writing", "url": "https://docs.snort.org/intro", "version": "Snort 3 documentation", "license": "Snort project documentation; retain attribution and verify reuse terms"},
+    {"title": "Snort 3 Getting Started", "tool": "Snort", "topic": "installation and configuration overview", "url": "https://docs.snort.org/start", "version": "Snort 3 documentation", "license": "Snort project documentation; retain attribution and verify reuse terms"},
+    {"title": "Snort 3 Reading Traffic", "tool": "Snort", "topic": "traffic inspection", "url": "https://docs.snort.org/start/inspection", "version": "Snort 3 documentation", "license": "Snort project documentation; retain attribution and verify reuse terms"},
+    {"title": "Snort 3 Rules", "tool": "Snort", "topic": "detection rules", "url": "https://docs.snort.org/start/rules", "version": "Snort 3 documentation", "license": "Snort project documentation; retain attribution and verify reuse terms"}
+  ],
+  "cisa_advisories": [
+    {"title": "CISA StopRansomware Guide", "url": "https://www.cisa.gov/sites/default/files/2025-03/StopRansomware-Guide%20508.pdf", "format": "pdf", "version": "2025-03", "publication_date": "2025-03", "license": "CISA TLP:CLEAR publication; preserve attribution and source marking"},
+    {"title": "CISA AA24-242A RansomHub Ransomware Advisory", "url": "https://www.cisa.gov/sites/default/files/2024-09/aa24-242a-stopransomware-ransomhub-ransomware_1.pdf", "format": "pdf", "version": "AA24-242A", "publication_date": "2024-09", "license": "CISA TLP:CLEAR advisory; preserve attribution and source marking"},
+    {"title": "CISA AA23-352A Play Ransomware Advisory", "url": "https://www.cisa.gov/sites/default/files/2023-12/aa23-352a-stopransomware-play-ransomware.pdf", "format": "pdf", "version": "AA23-352A", "publication_date": "2023-12", "license": "CISA TLP:CLEAR advisory; preserve attribution and source marking"}
   ]
 }

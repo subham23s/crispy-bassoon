@@ -63,7 +63,7 @@ def bootstrap(*, minimal: bool = False, full: bool = False, evaluation: bool = F
         report["processing"].append(_run("build_ml_datasets.py"))
         report["processing"].append(_run("scripts/validate_datasets.py"))
     else:
-        sources = ["ingest_mitre_attack.py", "ingest_cisa_kev.py", "ingest_nvd.py", "ingest_nist.py", "ingest_owasp.py"]
+        sources = ["ingest_mitre_attack.py", "ingest_cisa_kev.py", "ingest_nvd.py", "ingest_nist.py", "ingest_cisa_advisories.py", "ingest_owasp.py", "ingest_tools.py"]
         if full:
             sources.extend(["ingest_mitre_atlas.py", "ingest_cwe.py", "ingest_capec.py"])
         if papers:

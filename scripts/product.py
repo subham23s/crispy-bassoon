@@ -12,6 +12,7 @@ import socket
 import subprocess
 import sys
 import time
+import webbrowser
 from pathlib import Path
 from urllib.error import URLError
 from urllib.request import urlopen
@@ -65,8 +66,24 @@ def python_executable(args) -> str:
     return shutil.which("python3.12") or shutil.which("python3.11") or sys.executable
 
 
+def resolve_command(command: list[str]) -> list[str]:
+    if os.name == "nt" and command:
+        resolved = shutil.which(command[0])
+        if resolved:
+            return [resolved, *command[1:]]
+    return command
+
+
 def run(command: list[str], env=None) -> None:
-    subprocess.run(command, cwd=ROOT, env=env or environment(), check=True)
+    resolved = resolve_command(command)
+    # Invoke npm.cmd with an explicitly quoted cmd.exe command line on Windows.
+    # Its path can contain shell metacharacters (for example, "VITE&REACT").
+    if os.name == "nt" and resolved and Path(resolved[0]).name.lower() == "npm.cmd":
+        arguments = subprocess.list2cmdline(resolved[1:])
+        command_line = f'cmd.exe /d /s /c ""{resolved[0]}" {arguments}"'
+        subprocess.run(command_line, cwd=ROOT, env=env or environment(), check=True)
+        return
+    subprocess.run(resolved, cwd=ROOT, env=env or environment(), check=True)
 
 
 def setup(args) -> None:
@@ -100,15 +117,52 @@ def web_stamp(env: dict[str, str]) -> dict:
 def build() -> None:
     env = environment()
     run(["npm", "run", "build:portable" if str(ROOT).startswith("/mnt/") else "build", "--prefix", "frontend"], env)
+    standalone = ROOT / "frontend/.next/standalone"
+    if standalone.exists():
+        static_src = ROOT / "frontend/.next/static"
+        static_dst = standalone / ".next/static"
+        if static_src.exists():
+            shutil.copytree(static_src, static_dst, dirs_exist_ok=True)
+        public_src = ROOT / "frontend/public"
+        public_dst = standalone / "public"
+        if public_src.exists():
+            shutil.copytree(public_src, public_dst, dirs_exist_ok=True)
     save(STATE / "web-build.json", web_stamp(env))
 
 
+def free_port(port: int) -> None:
+    with socket.socket() as probe:
+        try:
+            probe.bind(("127.0.0.1", port))
+            return
+        except OSError as exc:
+            raise RuntimeError(f"Port {port} is already in use; refusing to stop its owner automatically") from exc
+
+
+def url_ready(url: str) -> bool:
+    try:
+        with urlopen(url, timeout=1) as response:
+            return 200 <= response.status < 500
+    except (URLError, TimeoutError, OSError):
+        return False
+
+
 def alive(pid: int) -> bool:
+    if os.name == "nt":
+        import ctypes
+        ctypes.windll.kernel32.OpenProcess.restype = ctypes.c_void_p
+        handle = ctypes.windll.kernel32.OpenProcess(0x1000, False, pid)
+        if not handle:
+            return False
+        exit_code = ctypes.c_ulong()
+        ctypes.windll.kernel32.GetExitCodeProcess(handle, ctypes.byref(exit_code))
+        ctypes.windll.kernel32.CloseHandle(handle)
+        return exit_code.value == 259
     try:
         os.kill(pid, 0)
         proc = Path(f"/proc/{pid}/stat")
         return not (proc.exists() and proc.read_text().rsplit(")", 1)[1].split()[0] == "Z")
-    except (ProcessLookupError, PermissionError):
+    except (ProcessLookupError, PermissionError, OSError):
         return False
 
 
@@ -125,13 +179,27 @@ def stop_services(state: dict) -> None:
             started = (proc / "stat").read_text().rsplit(")", 1)[1].split()[19]
             if not cwd.is_relative_to(ROOT) or (service.get("start_ticks") and service["start_ticks"] != started):
                 raise RuntimeError(f"PID {pid} no longer belongs to this product; refusing to stop it")
-        os.kill(pid, signal.SIGTERM)
-        for _ in range(100):
-            if not alive(pid):
-                break
-            time.sleep(0.1)
-        if alive(pid):
-            os.kill(pid, signal.SIGKILL)
+        if os.name == "nt":
+            import ctypes
+            handle = ctypes.windll.kernel32.OpenProcess(1, False, pid)
+            if handle:
+                ctypes.windll.kernel32.TerminateProcess(handle, 0)
+                ctypes.windll.kernel32.CloseHandle(handle)
+        else:
+            try:
+                os.kill(pid, signal.SIGTERM)
+            except OSError:
+                pass
+            for _ in range(100):
+                if not alive(pid):
+                    break
+                time.sleep(0.1)
+            if alive(pid):
+                kill_sig = getattr(signal, "SIGKILL", signal.SIGTERM)
+                try:
+                    os.kill(pid, kill_sig)
+                except OSError:
+                    pass
 
 
 def wait_url(url: str, process: subprocess.Popen, log: Path) -> None:
@@ -151,20 +219,29 @@ def wait_url(url: str, process: subprocess.Popen, log: Path) -> None:
 def up(args) -> None:
     configure()
     state_path = STATE / "product.json"
-    if state_path.exists():
-        previous = json.loads(state_path.read_text())
-        if any(alive(item["pid"]) for item in previous["services"]):
-            raise RuntimeError("Product is already running; use status or down first")
+    previous = json.loads(state_path.read_text()) if state_path.exists() else {}
     env = environment()
     api_port, web_port = int(env.get("PORT", "8000")), int(env.get("WEB_PORT", "3000"))
-    for port in (api_port, web_port):
-        with socket.socket() as probe:
-            probe.bind(("127.0.0.1", port))
+    api_url = f"http://127.0.0.1:{api_port}"
+    web_url = f"http://127.0.0.1:{web_port}"
+    api_ready, web_ready = url_ready(api_url + "/ready"), url_ready(web_url)
+    if api_ready and web_ready:
+        print(f"Product is already running at http://localhost:{web_port}")
+        if not getattr(args, "no_open", False):
+            print(f"[*] Opening dashboard in browser: http://localhost:{web_port}")
+            webbrowser.open(f"http://localhost:{web_port}")
+        return
+    if not api_ready:
+        free_port(api_port)
+    if not web_ready:
+        free_port(web_port)
     stamp_path = STATE / "web-build.json"
     expected = web_stamp(env)
     stamp = json.loads(stamp_path.read_text()) if stamp_path.exists() else None
     if not args.no_build and (stamp != expected or not (ROOT / "frontend/.next/BUILD_ID").exists()):
         build()
+    elif not stamp_path.exists() and (ROOT / "frontend/.next/BUILD_ID").exists():
+        save(stamp_path, expected)
     if not (ROOT / "frontend/.next/BUILD_ID").exists():
         raise RuntimeError("Production web build is missing; run product.py build")
     executable = python_executable(args)
@@ -173,28 +250,68 @@ def up(args) -> None:
         data = Path(args.data_dir).resolve()
         env.update(DATA_DIR=str(data), DATABASE_URL=f"sqlite:///{data / 'cybersecra.db'}")
     STATE.mkdir(exist_ok=True)
+    previous_services = {item.get("name"): item for item in previous.get("services", [])}
     state = {"api": f"http://localhost:{api_port}", "web": f"http://localhost:{web_port}", "services": []}
-    commands = [
-        ("backend", [executable, str(ROOT / "backend/run.py")], env, f"http://127.0.0.1:{api_port}/ready"),
-        ("frontend", ["node", str(ROOT / "frontend/node_modules/next/dist/bin/next"), "start", str(ROOT / "frontend"), "--hostname", env.get("WEB_HOST", "127.0.0.1"), "--port", str(web_port)], {**env, "PORT": str(web_port)}, f"http://127.0.0.1:{web_port}"),
-    ]
+    if api_ready and "backend" in previous_services:
+        state["services"].append(previous_services["backend"])
+    if web_ready and "frontend" in previous_services:
+        state["services"].append(previous_services["frontend"])
+    standalone = ROOT / "frontend/.next/standalone/server.js"
+    if standalone.exists():
+        frontend_cmd = ["node", str(standalone)]
+    else:
+        frontend_cmd = ["node", str(ROOT / "frontend/node_modules/next/dist/bin/next"), "start", str(ROOT / "frontend"), "--hostname", env.get("WEB_HOST", "127.0.0.1"), "--port", str(web_port)]
+    commands = []
+    if not api_ready:
+        commands.append(("backend", [executable, str(ROOT / "backend/run.py")], env, f"http://127.0.0.1:{api_port}/ready"))
+    if not web_ready:
+        commands.append(("frontend", frontend_cmd, {**env, "PORT": str(web_port), "HOSTNAME": env.get("WEB_HOST", "127.0.0.1")}, f"http://127.0.0.1:{web_port}"))
+    creation_flags = (subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.DETACHED_PROCESS) if os.name == "nt" else 0
+    started_services = []
     try:
         for name, command, service_env, url in commands:
             log = STATE / f"{name}.log"
             with log.open("ab") as output:
-                process = subprocess.Popen(command, cwd=ROOT, env=service_env, stdout=output, stderr=output, start_new_session=os.name != "nt")
+                try:
+                    process = subprocess.Popen(
+                        resolve_command(command),
+                        cwd=ROOT,
+                        env=service_env,
+                        stdout=output,
+                        stderr=output,
+                        start_new_session=os.name != "nt",
+                        creationflags=(creation_flags | 0x01000000) if os.name == "nt" else 0,
+                    )
+                except OSError:
+                    process = subprocess.Popen(
+                        resolve_command(command),
+                        cwd=ROOT,
+                        env=service_env,
+                        stdout=output,
+                        stderr=output,
+                        start_new_session=os.name != "nt",
+                        creationflags=creation_flags,
+                    )
             record = {"name": name, "pid": process.pid}
             proc = Path(f"/proc/{process.pid}/stat")
             if proc.exists():
                 record["start_ticks"] = proc.read_text().rsplit(")", 1)[1].split()[19]
             state["services"].append(record)
+            started_services.append(record)
             save(state_path, state)
             wait_url(url, process, log)
     except BaseException:
-        stop_services(state)
-        state_path.unlink(missing_ok=True)
+        stop_services({"services": started_services})
+        if state["services"]:
+            save(state_path, state)
+        else:
+            state_path.unlink(missing_ok=True)
         raise
-    print(json.dumps({"status": "running", "web": state["web"], "api": state["api"], "health": state["api"] + "/health", "readiness": state["api"] + "/ready"}, indent=2))
+    info = {"status": "running", "web": state["web"], "api": state["api"], "health": state["api"] + "/health", "readiness": state["api"] + "/ready"}
+    print(json.dumps(info, indent=2))
+    if not getattr(args, "no_open", False):
+        print("\n[*] Opening dashboard in browser: " + state["web"])
+        webbrowser.open(state["web"])
 
 
 def main() -> None:
@@ -204,6 +321,7 @@ def main() -> None:
     parser.add_argument("--venv", default=str(ROOT / ".venv"))
     parser.add_argument("--skip-web-install", action="store_true")
     parser.add_argument("--no-build", action="store_true")
+    parser.add_argument("--no-open", action="store_true", help="Do not auto-open the dashboard in the browser")
     parser.add_argument("--data-dir")
     args = parser.parse_args()
     if args.action == "configure": configure()

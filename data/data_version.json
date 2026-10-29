@@ -1,48 +1,18 @@
 {
   "schema_version": "1.0",
   "processing_version": "cybersecra-x-bootstrap-0.1",
-  "generated_at": "2026-10-03T01:11:00+00:00",
+  "generated_at": "2026-10-27T21:55:13+00:00",
   "hardware_profile": {
     "cpu_count": 8,
-    "ram_bytes": 4060471296,
-    "gpu": null,
-    "storage_available_bytes": 161772941312,
-    "python": "3.14.4",
-    "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
-    "recommended_profile": "low-resource-cpu"
+    "ram_bytes": 0,
+    "gpu": "NVIDIA GeForce RTX 3050 6GB Laptop GPU, 6144 MiB",
+    "storage_available_bytes": 205996564480,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "recommended_profile": "gpu"
   },
   "source_manifest": "data/data_manifest.json",
   "sources": [
-    {
-      "source": "MITRE ATT&CK",
-      "version": "bundle--6198013c-6f02-42a4-9713-38ea1301a1aa",
-      "checksum": "dc1639caa5501d720e280cf1cbd8fbe009884a0c9b3e6e9ed9d0c25166c3d8f4",
-      "status": "processed"
-    },
-    {
-      "source": "CISA KEV",
-      "version": "2026.10.02",
-      "checksum": "d2c8c6cb23291b46ff2b086197641a6b1fa35e6b746bba714cc280a1778f9e48",
-      "status": "processed"
-    },
-    {
-      "source": "NVD",
-      "version": "API v2.0",
-      "checksum": "4ad4a9c5387936c9ae14305f92359ebac426ccf53313d4b7df64bdc21184486f",
-      "status": "processed"
-    },
-    {
-      "source": "NIST",
-      "version": "configured-pages",
-      "checksum": "",
-      "status": "processed"
-    },
-    {
-      "source": "OWASP",
-      "version": "configured-pages",
-      "checksum": "",
-      "status": "processed"
-    },
     {
       "source": "MITRE ATLAS",
       "version": "v6-latest",
@@ -64,7 +34,43 @@
     {
       "source": "OpenAlex",
       "version": "API",
-      "checksum": "2c9347f029e4b5eda651010532f2b3066dbc507882ede7530ad44bb176846e73",
+      "checksum": "04f7064a72d63bff0025722189ebbe8b967795a511bccabc0946b090dd370efe",
+      "status": "processed"
+    },
+    {
+      "source": "MITRE ATT&CK",
+      "version": "bundle--fc207382-c9d1-4ece-bce2-6ef555c62d0a",
+      "checksum": "81113ba98afa2928f3dcff62022539f7ce30c315c32e14422f11ff95ce534352",
+      "status": "processed"
+    },
+    {
+      "source": "CISA KEV",
+      "version": "2026.10.27",
+      "checksum": "2d9931c086e42d05425c2da924299c8d9b7ff836de373f981668b7ef5f6f0fd7",
+      "status": "processed"
+    },
+    {
+      "source": "NVD",
+      "version": "API v2.0",
+      "checksum": "eee708f3637140dd3a4873e0d10ac20b719c30beb431d9ec1607363430071bea",
+      "status": "processed"
+    },
+    {
+      "source": "NIST",
+      "version": "configured-pages",
+      "checksum": "",
+      "status": "processed"
+    },
+    {
+      "source": "CISA",
+      "version": "configured-pages",
+      "checksum": "",
+      "status": "error"
+    },
+    {
+      "source": "OWASP",
+      "version": "configured-pages",
+      "checksum": "",
       "status": "processed"
     }
   ],

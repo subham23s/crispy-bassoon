@@ -22,6 +22,8 @@ SOURCES = {
     "cwe": "scripts/data/ingest_cwe.py",
     "capec": "scripts/data/ingest_capec.py",
     "nist": "scripts/data/ingest_nist.py",
+    "tools": "scripts/data/ingest_tools.py",
+    "cisa_advisories": "scripts/data/ingest_cisa_advisories.py",
     "owasp": "scripts/data/ingest_owasp.py",
 }
 

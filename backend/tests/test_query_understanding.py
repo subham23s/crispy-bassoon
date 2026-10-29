@@ -21,6 +21,11 @@ class QueryUnderstandingTests(unittest.TestCase):
         self.assertEqual(result.language, "hinglish")
         self.assertTrue(result.is_in_domain)
 
+    def test_recognizes_phishing_as_cybersecurity(self):
+        result = understand_query("How can an organization reduce phishing risk?")
+        self.assertTrue(result.is_in_domain)
+        self.assertEqual(result.intent, "email_security")
+
 
 if __name__ == "__main__":
     unittest.main()

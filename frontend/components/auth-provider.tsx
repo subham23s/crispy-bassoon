@@ -14,45 +14,77 @@ interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 const SESSION_KEY = 'cybersecra-x-session';
+const SESSION_RESTORE_TIMEOUT_MS = 8000;
+
+function getStoredSession(): string | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    return localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function setStoredSession(val: string): void {
+  if (typeof window === 'undefined') return;
+  try { localStorage.setItem(SESSION_KEY, val); } catch {}
+  try { sessionStorage.setItem(SESSION_KEY, val); } catch {}
+}
+
+function removeStoredSession(): void {
+  if (typeof window === 'undefined') return;
+  try { localStorage.removeItem(SESSION_KEY); } catch {}
+  try { sessionStorage.removeItem(SESSION_KEY); } catch {}
+}
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const clearAuth = useCallback(() => {
     setUser(null);
-    if (typeof window !== 'undefined') sessionStorage.removeItem(SESSION_KEY);
+    removeStoredSession();
   }, []);
   const persistSession = useCallback((tokens: { access_token: string; refresh_token: string } | null) => {
-    if (typeof window === 'undefined') return;
-    if (tokens) sessionStorage.setItem(SESSION_KEY, JSON.stringify(tokens));
-    else sessionStorage.removeItem(SESSION_KEY);
+    if (tokens) setStoredSession(JSON.stringify(tokens));
+    else removeStoredSession();
   }, []);
   const api = useMemo(() => new ApiClient(undefined, clearAuth, persistSession), [clearAuth, persistSession]);
 
   useEffect(() => {
     let active = true;
+    const controller = new AbortController();
+    let timeout: ReturnType<typeof setTimeout> | undefined;
     async function restore() {
       try {
-        const raw = sessionStorage.getItem(SESSION_KEY);
+        const raw = getStoredSession();
         if (!raw) return;
         const tokens = JSON.parse(raw) as { access_token?: string; refresh_token?: string };
         api.setSession(tokens);
-        const result = await api.me();
+        const timedOut = new Promise<never>((_, reject) => {
+          timeout = setTimeout(() => {
+            controller.abort();
+            reject(new Error('Session restore timed out.'));
+          }, SESSION_RESTORE_TIMEOUT_MS);
+        });
+        const result = await Promise.race([api.me(controller.signal), timedOut]);
         if (active) setUser(result.user);
       } catch {
-        api.clearSession();
-        sessionStorage.removeItem(SESSION_KEY);
+        if (active) {
+          api.clearSession();
+          removeStoredSession();
+        }
       } finally {
+        clearTimeout(timeout);
         if (active) setLoading(false);
       }
     }
     restore();
-    return () => { active = false; };
+    return () => { active = false; clearTimeout(timeout); controller.abort(); };
   }, [api]);
 
   const signIn = useCallback(async (email: string, password: string, register = false) => {
     const result = register ? await api.register(email, password) : await api.login(email, password);
-    if (typeof window !== 'undefined') sessionStorage.setItem(SESSION_KEY, JSON.stringify({ access_token: result.access_token, refresh_token: result.refresh_token }));
+    setStoredSession(JSON.stringify({ access_token: result.access_token, refresh_token: result.refresh_token }));
     const profile = result.user ? { user: result.user } : await api.me();
     setUser(profile.user ?? null);
   }, [api]);

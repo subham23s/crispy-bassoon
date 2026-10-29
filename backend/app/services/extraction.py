@@ -35,7 +35,7 @@ def _ocr(image: Any) -> str:
         raise ExtractionUnavailable(f"OCR failed ({type(exc).__name__}); document is not indexed") from exc
 
 
-def extract(filename: str, payload: bytes) -> Extraction:
+def extract(filename: str, payload: bytes, *, extract_pdf_tables: bool = True) -> Extraction:
     suffix = Path(filename).suffix.lower()
     spans: list[dict[str, Any]] = []
     warnings: list[str] = []
@@ -75,14 +75,15 @@ def extract(filename: str, payload: bytes) -> Extraction:
                 if text:
                     parts.append(f"[Page {number}]\n{text}")
                     spans.append({"page": number, "section": "body", "engine": engine})
-                try:
-                    for index, table in enumerate(page.find_tables().tables, 1):
-                        cells = table.extract()
-                        if cells:
-                            parts.append(f"[Page {number}]\n[Table {index}]\n" + "\n".join(" | ".join(str(cell or "") for cell in row) for row in cells))
-                            spans.append({"page": number, "section": f"table {index}", "engine": "pymupdf", "bbox": list(table.bbox)})
-                except Exception as exc:
-                    warnings.append(f"Page {number}: table extraction unavailable ({type(exc).__name__})")
+                if extract_pdf_tables:
+                    try:
+                        for index, table in enumerate(page.find_tables().tables, 1):
+                            cells = table.extract()
+                            if cells:
+                                parts.append(f"[Page {number}]\n[Table {index}]\n" + "\n".join(" | ".join(str(cell or "") for cell in row) for row in cells))
+                                spans.append({"page": number, "section": f"table {index}", "engine": "pymupdf", "bbox": list(table.bbox)})
+                    except Exception as exc:
+                        warnings.append(f"Page {number}: table extraction unavailable ({type(exc).__name__})")
         engine = "pdf_text_and_ocr"
     elif suffix == ".docx":
         try:

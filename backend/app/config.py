@@ -89,7 +89,7 @@ class Settings:
     data_dir: Path = Path(os.getenv("DATA_DIR", str(ROOT_DIR / "data")))
     demo_mode: bool = _bool("DEMO_MODE", True)
     cors_origins: tuple[str, ...] = tuple(
-        origin.strip() for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173").split(",") if origin.strip()
+        origin.strip() for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000,http://127.0.0.1:8000,http://localhost:5173,http://127.0.0.1:5173").split(",") if origin.strip()
     )
 
 

@@ -10,6 +10,7 @@ from typing import Iterable
 
 from app.models import Chunk, Document, Evidence, QueryUnderstanding
 from app.services.corpus import DocumentStore
+from app.services.query_understanding import INTENT_KEYWORDS
 
 STOPWORDS = {
     "the", "and", "for", "that", "this", "with", "from", "what", "which", "how", "are", "is", "was", "were", "about", "into", "can", "does", "its", "their", "have", "has", "to", "of", "in", "on", "a", "an", "or", "be", "as", "by", "it", "at", "do", "i", "me", "my", "please",
@@ -175,6 +176,13 @@ class HybridRetriever:
         # a signal from the user's original query or a graph relationship.
         identifiers = re.findall(r"\b(?:CVE-\d{4}-\d{4,7}|CWE-\d+|CAPEC-\d+|T\d{4}(?:\.\d{3})?)\b", query, flags=re.IGNORECASE)
         identifier_candidates = [chunk for chunk, _ in prepared if any(identifier.lower() in chunk.text.lower() for identifier in identifiers)]
+        lowered_query = query.lower()
+        intent_terms = {
+            term
+            for phrase in INTENT_KEYWORDS.get(understanding.intent, ())
+            if phrase in lowered_query
+            for term in tokens(phrase)
+        }
         source_hints = [hint for hint in ("nvd", "nist", "cisa", "mitre", "owasp", "cwe", "capec") if hint in query.lower()]
         source_candidates = []
         if source_hints:
@@ -183,17 +191,30 @@ class HybridRetriever:
                 haystack = str(document.source if document else "").lower()
                 if any(re.search(rf"\b{re.escape(hint)}\b", haystack) for hint in source_hints):
                     source_candidates.append(chunk)
-        candidates = identifier_candidates or source_candidates or [
-            chunk for chunk, terms in prepared
-            if set(original_terms).intersection(terms)
-            or _tfidf_cosine(original_terms, terms, doc_frequency, total_docs) > 0
-            or graph_scores[chunk.chunk_id] > 0
-        ]
+        if identifiers:
+            # Identifier lookups must match the requested identifier exactly;
+            # do not substitute generic records from the same source family.
+            candidates = identifier_candidates
+        elif intent_terms:
+            # For a classified topic, require at least one of the topic words in
+            # the retrieved passage. Generic expansion terms alone are not proof
+            # that a document answers a specific question.
+            candidates = [chunk for chunk, terms in prepared if intent_terms.intersection(terms)]
+            if source_hints and source_candidates:
+                source_ids = {chunk.chunk_id for chunk in source_candidates}
+                candidates = [chunk for chunk in candidates if chunk.chunk_id in source_ids]
+        elif source_hints:
+            candidates = source_candidates
+        else:
+            candidates = [
+                chunk for chunk, terms in prepared
+                if set(original_terms).intersection(terms)
+                or _tfidf_cosine(original_terms, terms, doc_frequency, total_docs) > 0
+                or graph_scores[chunk.chunk_id] > 0
+            ]
         if graph_documents:
             selected_ids = {chunk.chunk_id for chunk in candidates}
             candidates += [chunk for chunk, _ in prepared if chunk.document_id in graph_documents and chunk.chunk_id not in selected_ids]
-        if not candidates:
-            candidates = chunks
         lexical_order = sorted(candidates, key=lambda c: lexical_scores[c.chunk_id], reverse=True)
         dense_order = sorted(chunks, key=lambda c: dense_scores[c.chunk_id], reverse=True)
         graph_order = sorted(chunks, key=lambda c: graph_scores[c.chunk_id], reverse=True)

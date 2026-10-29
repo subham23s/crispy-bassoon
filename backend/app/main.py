@@ -224,7 +224,7 @@ def _query_response(payload: dict[str, Any], user_id: str) -> dict[str, Any]:
         raise ValueError("query is required")
     mode = str(payload.get("mode", "RESEARCHER")).upper()
     _validate_workspace(payload, user_id)
-    answer = runtime.pipeline.ask(query, mode=mode, owner_id=user_id)
+    answer = runtime.pipeline.ask(query, mode=mode, owner_id=user_id, answer_style=str(payload.get("answer_style", "balanced")))
     _save_answer(answer, payload, user_id)
     return answer.to_dict()
 
@@ -324,6 +324,42 @@ def _route(method: str, path: str, payload: dict[str, Any], headers: dict[str, s
                     "neo4j_graph": services["neo4j"]["available"],
                 },
             }
+        if method == "GET" and path == "/data/sources":
+            _require_user(user)
+            manifest_path = settings.data_dir / "data_manifest.json"
+            manifest: dict[str, Any] = {}
+            if manifest_path.exists():
+                try:
+                    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+                except json.JSONDecodeError:
+                    manifest = {}
+            source_config_path = settings.data_dir / "source_config.json"
+            try:
+                source_config = json.loads(source_config_path.read_text(encoding="utf-8")) if source_config_path.exists() else {}
+            except json.JSONDecodeError:
+                source_config = {}
+            configured_keys = {"NIST": "nist", "OWASP": "owasp", "CISA": "cisa_advisories", "Security Tools": "tools"}
+            sources = []
+            for item in manifest.get("sources", []):
+                if not isinstance(item, dict):
+                    continue
+                sources.append({
+                    "name": str(item.get("source", "Unknown source")),
+                    "status": str(item.get("status", "unknown")),
+                    "records": item.get("records"),
+                    "version": str(item.get("version", "")),
+                    "processed_at": item.get("processed_at") or item.get("downloaded_at"),
+                    "url": str(item.get("url", "")),
+                    "references": [
+                        {"title": str(reference.get("title", "Official documentation")), "url": str(reference.get("url", ""))}
+                        for reference in source_config.get(configured_keys.get(str(item.get("source", "")), ""), [])
+                        if isinstance(reference, dict) and str(reference.get("url", "")).startswith("https://")
+                    ] or ([{"title": "Official source", "url": str(item.get("url"))}] if str(item.get("url", "")).startswith("https://") else []),
+                    "failures": item.get("failures", []),
+                })
+            sources.sort(key=lambda item: item["name"].casefold())
+            refresh = _refresh_status()
+            return 200, {"sources": sources, "refresh_status": refresh.get("status", "never_run"), "refresh_finished_at": refresh.get("finished_at"), "refresh_failures": refresh.get("failures", [])}
         if method == "POST" and path == "/auth/register":
             return 201, runtime.auth.register(str(payload.get("email", "")), str(payload.get("password", "")), str(payload.get("role", "USER")))
         if method == "POST" and path == "/auth/login":
@@ -670,7 +706,7 @@ def _stream_query_events(payload: dict[str, Any], actor: dict[str, Any]):
         yield _sse("error", {"detail": "query is required"})
         return
     _validate_workspace(payload, actor["sub"])
-    for event in runtime.pipeline.stream(query, mode=str(payload.get("mode", "RESEARCHER")), owner_id=actor["sub"]):
+    for event in runtime.pipeline.stream(query, mode=str(payload.get("mode", "RESEARCHER")), owner_id=actor["sub"], answer_style=str(payload.get("answer_style", "balanced"))):
         if event.get("reset"):
             yield _sse("answer_reset", {})
         elif "text" in event:
@@ -997,6 +1033,13 @@ def create_app() -> Any:
     @app.get("/data/refresh/status")
     async def refresh_status(request: Request) -> Any:
         status, result = _route("GET", "/data/refresh/status", {}, dict(request.headers))
+        if status >= 400:
+            raise HTTPException(status_code=status, detail=result["detail"])
+        return result
+
+    @app.get("/data/sources")
+    async def data_sources(request: Request) -> Any:
+        status, result = _route("GET", "/data/sources", {}, dict(request.headers))
         if status >= 400:
             raise HTTPException(status_code=status, detail=result["detail"])
         return result

@@ -11,3 +11,10 @@ requires-python = ">=3.11"
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+
+[tool.pyright]
+include = ["app", "tests"]
+extraPaths = ["."]
+venvPath = ".."
+venv = ".venv"
+
